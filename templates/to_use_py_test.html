@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+  <head>
+          {% load staticfiles %}
+    <meta charset="gb2312">
+    <title>python draw flowers</title>
+<script language="javascript">
+function exec1 (command) {
+  var ws = new ActiveXObject("WScript.Shell");
+  ws.exec(command);
+}
+</script>
+  </head>
+  <body>
+    turtle 画一朵花    <a href="{% static "./py/hello_world.py" %}" target="show"> 源代码 </a>  
+    <input type="button" value="运行 python" onclick="exec1('D:\\python\\pythonw.exe E:\\workspace_django\\mysite\\static\\py\\hello_world.py')" />
+    <br/>
+
+
+
+  <script type="text/javascript" src="{% static "./vendor/jquery/jquery.js" %}"></script>
+<script type="text/javascript">
+$(document).ready(function(){
+  $("#b01").click(function(){
+  var htmlobj=$.ajax({url:"{% static "./test.txt" %}",async:false});
+  $("#myDiv").html(htmlobj.responseText);
+  });
+});
+</script>
+
+
+
+<div id="myDiv"><h>通过 AJAX 改变文本</h></div>
+<button id="b01" type="button">改变内容</button>
+  </body>
+</html>
