@@ -79,7 +79,7 @@ def upload_file(request):
             pwd = os.path.abspath(os.path.join(os.path.dirname("__file__"), os.path.pardir))
             # pwd = os.path.dirname(__file__)
             print(pwd)
-            with open(pwd+"/mysite/static/radio/%s" % file.name, 'wb+') as f:
+            with open(pwd+"/mysite/static/radio/%s.wav" % file.name, 'wb+') as f:
                 # 分块写入文件;
                 for chunk in file.chunks():
                     f.write(chunk)

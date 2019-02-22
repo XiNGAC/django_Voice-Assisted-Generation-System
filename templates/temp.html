@@ -315,7 +315,7 @@ RandomKey.idx=0;
                                                     $("#p_record_notice").html("正在输入...");
                                                 });
                                             </script>
-                                            <button id="stop_record" disabled="disabled" type="button" class="btn btn-rounded btn-secondary btn-lg" onclick="recstop()">结束录音</button>
+                                            <button id="stop_record" disabled="disabled" type="submit" value="upload" class="btn btn-rounded btn-secondary btn-lg" onclick="recstop()">结束录音</button>
                                             <script type="text/javascript">
                                                 $("#stop_record").on('click', function(){
                                                     $("#stop_record").removeClass("btn-primary");
@@ -328,15 +328,18 @@ RandomKey.idx=0;
 
                                                 });
                                             </script>
-                                            <div class="pd recpower">
-                                                <div style="height:40px;width:300px;background:#999;position:relative;">
-                                                    <div class="recpowerx" style="height:40px;background:#0B1;position:absolute;"></div>
-                                                    <div class="recpowert" style="padding-left:50px; line-height:40px; position: relative;"></div>
-                                                </div>
-                                            </div>
+
+{#                                            <div class="pd recpower">#}
+{#                                                <div style="height:40px;width:300px;background:#999;position:relative;">#}
+{#                                                    <div class="recpowerx" style="height:40px;background:#0B1;position:absolute;"></div>#}
+{#                                                    <div class="recpowert" style="padding-left:50px; line-height:40px; position: relative;"></div>#}
+{#                                                </div>#}
+{#                                            </div>#}
+
+                                            <hr>
                                             	<div class="pd">
                                                     <div style="height:100px;width:300px;border:1px solid #ccc;box-sizing: border-box;display:inline-block" class="recwave"></div>
-                                                    <input type="checkbox" class="recwaveSet" checked>
+                                                    <input type="checkbox" class="recwaveSet" checked style="display:none">
                                                 </div>
                                             <small id="p_record_notice" class="form-text-green"><br></small>
                                             	<hr>
@@ -390,7 +393,7 @@ RandomKey.idx=0;
                     </div>
                 </div>
 
-                <! 转文字结果栏 >
+                <! 选择患者栏 >
                 <div class="row mt-4">
                     <div class="col-md-12">
                         <div class="card">
@@ -968,11 +971,25 @@ $(window).bind("error",function(e){
 		var downA=document.createElement("A");
 		downA.innerHTML="下载 "+name;
 		downA.href=URL.createObjectURL(o.blob);
-		alert(downA.href)
+		//alert(downA)
 
-		downA.download=name;
-		$("."+cls).prepend(downA);
-		downA.click();
+        var formData = new FormData();
+		formData.append('myfile', o.blob);
+		$.ajax({
+    url: '/upload/',
+    type: 'POST',
+    cache: false,
+    data: formData,
+    processData: false,
+    contentType: false,
+})
+        //alert (o.blob)
+
+
+
+		//downA.download=name;
+		//$("."+cls).prepend(downA);
+		//downA.click();
 	};
 };
     var intp=function(s,len){
