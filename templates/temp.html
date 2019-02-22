@@ -968,6 +968,8 @@ $(window).bind("error",function(e){
 		var downA=document.createElement("A");
 		downA.innerHTML="下载 "+name;
 		downA.href=URL.createObjectURL(o.blob);
+		alert(downA.href)
+
 		downA.download=name;
 		$("."+cls).prepend(downA);
 		downA.click();

@@ -4,6 +4,9 @@ from django.db import connection
 from django.http import JsonResponse
 from django.views.decorators.csrf import csrf_exempt
 from django.shortcuts import HttpResponse
+import os
+from django.forms import fields
+from django import forms
 
 from aip import AipSpeech
 import  wave
@@ -62,3 +65,24 @@ def ajax_patient_info(request):
         c.execute("select patient_name,patient_sex,patient_age from patient where patient_name=%s" [p_name])
         patient_info = c.fetchall()
     return JsonResponse(patient_info, safe=False)
+
+
+def upload_file(request):
+    # 请求方法为POST时,进行处理;
+    if request.method == "POST":
+        # 获取上传的文件,如果没有文件,则默认为None;
+        file = request.FILES.get("myfile", None)
+        if file is None:
+            return HttpResponse("no files for upload!")
+        else:
+            # 打开特定的文件进行二进制的写操作;
+            pwd = os.path.abspath(os.path.join(os.path.dirname("__file__"), os.path.pardir))
+            # pwd = os.path.dirname(__file__)
+            print(pwd)
+            with open(pwd+"/mysite/static/radio/%s" % file.name, 'wb+') as f:
+                # 分块写入文件;
+                for chunk in file.chunks():
+                    f.write(chunk)
+            return HttpResponse("upload over!")
+    else:
+        return render(request, 'upload.html')

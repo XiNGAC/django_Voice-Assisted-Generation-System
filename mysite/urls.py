@@ -15,6 +15,7 @@ Including another URLconf
 """
 from django.conf.urls import url
 from django.contrib import admin
+
 from django.urls import path
 from cmdb import views
 
@@ -28,5 +29,6 @@ urlpatterns = [
     url(r'^xx/', views.xx, name='xx'),
     url(r'^ajax_patient$', views.ajax_patient),
     url(r'^ajax_patient_info$', views.ajax_patient_info),
+    url(r'^upload/$', views.upload_file, name='upload_file'),
     # path('admin/', admin.site.urls),
 ]
