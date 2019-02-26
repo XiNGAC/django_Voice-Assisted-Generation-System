@@ -24,7 +24,10 @@ import time
 
 class UserForm(forms.Form):
     username = forms.CharField(label='用户名',max_length=100)
-    password = forms.CharField(label='密_码',widget=forms.PasswordInput())
+    email = forms.CharField(label='用户名',max_length=100)
+    password = forms.CharField(label='密_码')
+    # password1 = forms.CharField(label='xxx')
+    confirm = forms.CharField(label='确_认')
 
 
 def index(request):
@@ -55,6 +58,38 @@ def registered(request):
 
 
 def register(request):
+    print('0')
+    if request.method == 'POST':
+        print('00')
+        message = "检查填写内容"
+        uf = UserForm(request.POST)
+        print(uf)
+        if uf.is_valid():
+            print('xx')
+            username = request.POST.get('username')
+            email = request.POST.get('email')
+            password = request.POST.get('password')
+            confirm = request.POST.get('confirm')
+            print(username,email,password,confirm)
+            if password != confirm:
+                message = "两次输入的密码不同！"
+                print('1')
+                return render(request, 'register.html', locals())
+            else:
+                same_name_user = User.objects.filter(name=username)
+                if same_name_user:
+                    message = "用户名已存在"
+                    print('2')
+                    return render(request, 'register.html', locals())
+            register_add = User.objects.create_user(username=username, email=email, password=password)
+            print('add')
+            if register_add == False:
+                print('3')
+                return render(request, 'share1.html', {'registAdd': register_add, 'username': username})
+    else:
+        uf = UserForm()
+        print('4')
+
     return render(request, 'register.html')
 
 
