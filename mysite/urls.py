@@ -21,11 +21,16 @@ from cmdb import views
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
+    # url(r'^$', views.temp),
     url(r'^index/', views.index),
     url(r'^forms/', views.forms, name='forms'),
     url(r'^temp/', views.temp, name='temp'),
+    # url(r'^login/', views.login, name='login'),
+    url(r'^login/', views.login, name='login'),
+    url(r'^registered/', views.registered, name='registered'),
+    url(r'^register/', views.register, name='register'),
+    url(r'^logout/', views.logout, name='logout'),
     url(r'^audio_test/', views.audio_test, name='audio_test'),
-    url(r'^$', views.sousuo),
     url(r'^xx/', views.xx, name='xx'),
     url(r'^ajax_patient$', views.ajax_patient),
     url(r'^ajax_patient_info$', views.ajax_patient_info),

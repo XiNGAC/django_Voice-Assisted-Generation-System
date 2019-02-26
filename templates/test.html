@@ -1,26 +1,63 @@
-<!DOCTYPE html>
-<html>
+<!doctype html>
+<html lang="en">
 <head>
-    <title>开始搜索</title>
+    {% load staticfiles %}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Carbon - Admin Template</title>
+    <link rel="stylesheet" href="{% static "./vendor/simple-line-icons/css/simple-line-icons.css" %}">
+    <link rel="stylesheet" href="{% static "./vendor/font-awesome/css/fontawesome-all.min.css" %}">
+    <link rel="stylesheet" href="{% static "./css/styles.css" %}">
 </head>
 <body>
-请填入搜索内容！ <br><br />
+<div class="page-wrapper flex-row align-items-center">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-5">
+                <div class="card p-4">
+                    <div class="card-header text-center text-uppercase h4 font-weight-light">
+                        Login
+                    </div>
 
-<form action="http://www.baidu.com/baidu" target="_blank">
-              <table style="width:65%">
-                <tbody>
-                <tr style="border:0px">
-                    <td>
-                  <input name="tn" type="hidden" value="SE_zzsearchcode_shhzc78w">
-                  <!-- <a href="http://www.baidu.com/"><img src="http://img.baidu.com/img/logo-80px.gif" alt="Baidu" align="bottom" border="0"></a> -->
-                  <input class="form-control" type="text" style="width:550px;font-size:18px" name="word" size="30" baidusug="1">
-                  </td>
-                  <td>
-                    <input class="form-control btn btn-primary" type="submit" style="background-color:#025aa5;color:white" value="百度搜索">
-                  </td>
-              </tr>
-                </tbody>
-              </table>
-            </form>
+                    <div class="card-body py-5">
+                        <div class="form-group">
+                            <label class="form-control-label">Email</label>
+                            <input type="email" class="form-control">
+                        </div>
+
+                        <div class="form-group">
+                            <label class="form-control-label">Password</label>
+                            <input type="password" class="form-control">
+                        </div>
+
+                        <div class="custom-control custom-checkbox mt-4">
+                            <input type="checkbox" class="custom-control-input" id="login">
+                            <label class="custom-control-label" for="login">Check this custom checkbox</label>
+                        </div>
+                    </div>
+
+                    <div class="card-footer">
+                        <div class="row">
+                            <div class="col-6">
+                                <button type="submit" class="btn btn-primary px-5">Login</button>
+                            </div>
+
+                            <div class="col-6">
+                                <a href="#" class="btn btn-link">Forgot password?</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="{% static "./vendor/jquery/jquery.min.js" %}"></script>
+<script src="{% static "./vendor/popper.js/popper.min.js" %}"></script>
+<script src="{% static "./vendor/bootstrap/js/bootstrap.min.js" %}"></script>
+<script src="{% static "./vendor/chart.js/chart.min.js" %}"></script>
+<script src="{% static "./js/carbon.js" %}"></script>
+<script src="{% static "./js/demo.js" %}"></script>
 </body>
 </html>

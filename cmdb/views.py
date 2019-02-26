@@ -1,10 +1,12 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 
 from django.db import connection
 from django.http import JsonResponse
 from django.views.decorators.csrf import csrf_exempt
 from django.shortcuts import HttpResponse
 import os
+from django.contrib import auth
+from django.contrib.auth.models import User
 from django.forms import fields
 from django import forms
 
@@ -20,6 +22,11 @@ import time
 # Create your views here.
 
 
+class UserForm(forms.Form):
+    username = forms.CharField(label='用户名',max_length=100)
+    password = forms.CharField(label='密_码',widget=forms.PasswordInput())
+
+
 def index(request):
     # request.POST
     # request.GET
@@ -31,8 +38,8 @@ def index(request):
     return render(request, "index.html",)
 
 
-def sousuo(request):
-    return render(request, "index.html",)
+def test(request):
+    return render(request, "test.html",)
 
 
 def forms(request):
@@ -41,6 +48,34 @@ def forms(request):
 
 def temp(request):
     return render(request, "temp.html",)
+
+
+def registered(request):
+    return render(request, 'registered.html')
+
+
+def register(request):
+    return render(request, 'register.html')
+
+
+def login(request):
+    if request.method == 'POST':
+        username = request.POST.get('username')
+        password = request.POST.get('password')
+        print(username, password)
+        re = auth.authenticate(username=username, password=password)
+        if re is not None:
+            auth.login(request, re)
+            print(re)
+            return redirect("/temp", {'user': re})
+        else:
+            return render(request, 'login.html', {'login_error': '用户名或密码错误'})
+    return render(request, "login.html",)
+
+
+def logout(request):
+    auth.logout(request)
+    return render(request, "temp.html")
 
 
 def xx(request):

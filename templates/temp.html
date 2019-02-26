@@ -48,11 +48,15 @@ RandomKey.idx=0;
             <i class="fa fa-bars"></i>
         </a>
 
+
+
         <ul class="navbar-nav ml-auto">
+
+            {% if user.is_authenticated %}
             <li class="nav-item d-md-down-none">
                 <a href="#">
                     <i class="fa fa-bell"></i>
-                    <span class="badge badge-pill badge-danger">5</span>
+                    <span class="badge badge-pill badge-danger">3</span>
                 </a>
             </li>
 
@@ -66,13 +70,13 @@ RandomKey.idx=0;
             <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                     <img src="{% static "./imgs/avatar-1.png" %}" class="avatar avatar-sm" alt="logo">
-                    <span class="small ml-1 d-md-down-none">John Smith</span>
+                    <span class="small ml-1 d-md-down-none">{{ user.username }}</span>
                 </a>
 
                 <div class="dropdown-menu dropdown-menu-right">
                     <div class="dropdown-header">Account</div>
 
-                    <a href="#" class="dropdown-item">
+                    <a href="/login/" class="dropdown-item">
                         <i class="fa fa-user"></i> Profile
                     </a>
 
@@ -90,11 +94,34 @@ RandomKey.idx=0;
                         <i class="fa fa-wrench"></i> Settings
                     </a>
 
-                    <a href="#" class="dropdown-item">
+                    <a href="/logout/" class="dropdown-item">
                         <i class="fa fa-lock"></i> Logout
                     </a>
                 </div>
             </li>
+
+            {% else %}
+                <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <img src="{% static "./imgs/avatar-1.png" %}" class="avatar avatar-sm" alt="logo">
+                    <span class="small ml-1 d-md-down-none">Welcome</span>
+                </a>
+
+                <div class="dropdown-menu dropdown-menu-right">
+                    <div class="dropdown-header">Account</div>
+
+                    <a href="/registered/" class="dropdown-item">
+                        <i class="fa fa-user"></i> registered
+                    </a>
+
+                    <a href="/login/" class="dropdown-item">
+                        <i class="fa fa-envelope"></i> login
+                    </a>
+
+                </div>
+            </li>
+
+            {% endif %}
         </ul>
     </nav>
 
@@ -105,7 +132,7 @@ RandomKey.idx=0;
                     <li class="nav-title">Navigation</li>
 
                     <li class="nav-item">
-                        <a href="index.html" class="nav-link">
+                        <a href="/index/" class="nav-link">
                             <i class="icon icon-speedometer"></i> Dashboard
                         </a>
                     </li>
