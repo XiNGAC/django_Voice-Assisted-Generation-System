@@ -70,27 +70,29 @@ def register(request):
             email = request.POST.get('email')
             password = request.POST.get('password')
             confirm = request.POST.get('confirm')
-            print(username,email,password,confirm)
+            print(username, email, password, confirm)
             if password != confirm:
                 message = "两次输入的密码不同！"
                 print('1')
                 return render(request, 'register.html', locals())
             else:
-                same_name_user = User.objects.filter(name=username)
+                same_name_user = User.objects.filter(username=username)
                 if same_name_user:
                     message = "用户名已存在"
                     print('2')
                     return render(request, 'register.html', locals())
             register_add = User.objects.create_user(username=username, email=email, password=password)
             print('add')
+            print(register_add)
+            message = "注册成功"
             if register_add == False:
                 print('3')
                 return render(request, 'share1.html', {'registAdd': register_add, 'username': username})
     else:
         uf = UserForm()
         print('4')
-
-    return render(request, 'register.html')
+    return HttpResponse(message)
+    # return render(request, 'register.html')
 
 
 def login(request):
