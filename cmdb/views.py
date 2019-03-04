@@ -10,6 +10,7 @@ from django.contrib.auth.models import User
 from django.forms import fields
 from django import forms
 from cmdb.models import ReportDetail
+import json
 
 from aip import AipSpeech
 import  wave
@@ -142,7 +143,7 @@ def ajax_patient_info(request):
 
 def ajax_report_detail(request):
     with connection.cursor() as c:
-        c.execute("select * from report_detail where report_id = '0'")
+        c.execute("select * from report_detail where report_id = '1'")
         report_detail = c.fetchall()
         print(report_detail)
     return JsonResponse(report_detail, safe=False)
@@ -172,19 +173,53 @@ def upload_file(request):
 def run_py(request):
     if request.method == "POST":
         os.system('D:\\python\\python.exe E:\\workspace_django\\mysite\\static\\py\\audio_transfer.py')
-
+        os.system('D:\\python\\python.exe E:\\workspace_django\\mysite\\static\\py\\word_cut_test.py')
         return render(request, 'temp.html')
 
 
 def insert_into_mysql(request):
     if request.method == "POST":
-        print((request.POST))
-        patient_id = request.POST.get('table_patient_id')
-
-        department_name = request.POST.get('department_name')
-        check_item = request.POST.get('check_item')
-        machine_number = request.POST.get('machine_number')
-        print(patient_id,department_name,check_item,machine_number)
-        #create = ReportDetail.objects.create(patient_id=patient_id, department_name=department_name, check_item=check_item, machine_number=machine_number)
-        #print(type(create),create)
-        return HttpResponse("ok")
+        print((request.POST.get('string')))
+        #print(json.loads(request.POST.get('string'))['table_patient_id'])
+        temp_json = json.loads(request.POST.get('string'))
+        # {'table_patient_id': '0'},
+        patient_id = temp_json['table_patient_id']
+        department_name = temp_json['department_name']
+        door_number = temp_json['door_number']
+        check_number = temp_json['check_number']
+        check_item = temp_json['check_item']
+        machine_number = temp_json['machine_number']
+        size_right_UL =temp_json['size_right_UL']
+        size_right_LR = temp_json['size_right_LR']
+        size_right_FB =temp_json['size_right_FB']
+        size_left_UL = temp_json['size_left_UL']
+        size_left_LR = temp_json['size_left_LR']
+        size_left_FB = temp_json['size_left_FB']
+        size_thickness = temp_json['size_thickness']
+        size_normal = temp_json['size_normal']
+        substantial_echo =temp_json['substantial_echo']
+        lump_echo = temp_json['lump_echo']
+        blood_flow_distribution = temp_json['blood_flow_distribution']
+        blood_flow_spectrum = temp_json['blood_flow_spectrum']
+        left_PSV = temp_json['left_PSV']
+        left_EDV = temp_json['left_EDV']
+        right_PSV = temp_json['right_PSV']
+        right_EDV =temp_json['right_EDV']
+        diagnosis = temp_json['diagnosis']
+        review_physician = temp_json['review_physician']
+        check_date = temp_json['check_date']
+        print(patient_id,department_name,check_item,machine_number,size_left_FB,size_thickness,left_EDV)
+        create = ReportDetail.objects.create(patient_id=patient_id, department_name=department_name,
+                                             check_item=check_item, machine_number=machine_number,
+                                             size_right_ul=size_right_UL, size_right_lr=size_right_LR,
+                                             size_right_fb=size_right_FB, size_left_ul=size_left_UL,
+                                             size_left_lr=size_left_LR, size_left_fb=size_left_FB,
+                                             size_thickness=size_thickness, size_normal=size_normal,
+                                             substantial_echo=substantial_echo,lump_echo=lump_echo,
+                                             blood_flow_distribution=blood_flow_distribution,
+                                             blood_flow_spectrum=blood_flow_spectrum, left_psv=left_PSV,
+                                             left_edv=left_EDV, right_psv=right_PSV, right_edv=right_EDV,
+                                             diagnosis=diagnosis, review_physician=review_physician,
+                                             check_date=check_date)
+        print(type(create),create)
+        return JsonResponse(temp_json, safe=False)

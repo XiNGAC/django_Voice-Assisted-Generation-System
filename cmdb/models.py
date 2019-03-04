@@ -1,4 +1,4 @@
-# database version: 5.7.21
+#database version: 5.7.21
 # This is an auto-generated Django model module.
 # You'll have to do the following manually to clean this up:
 #   * Rearrange models' order
@@ -141,7 +141,7 @@ class Patient(models.Model):
 
 
 class ReportDetail(models.Model):
-    report_id = models.CharField(primary_key=True, max_length=20)
+    report_id = models.IntegerField(primary_key=True)
     patient_id = models.CharField(max_length=255)
     department_name = models.CharField(max_length=255)
     check_item = models.CharField(max_length=255)

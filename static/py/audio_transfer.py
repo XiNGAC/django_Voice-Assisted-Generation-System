@@ -41,6 +41,7 @@ def dealwav():
     result = json_dict['result']'''
     f = codecs.open('E:/workspace_django/mysite/static/test.txt', 'w', encoding='utf-8')
     str = ''.join(an['result'])
+    print(str)
     f.write(str)
     f.close
 
