@@ -127,7 +127,7 @@ try:
     cursor.execute(sql_insert)
     db.commit()
     print("good")
-except :
+except:
     db.rollback()
     print("wtf")
 db.close()

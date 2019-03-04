@@ -9,6 +9,7 @@ from django.contrib import auth
 from django.contrib.auth.models import User
 from django.forms import fields
 from django import forms
+from cmdb.models import ReportDetail
 
 from aip import AipSpeech
 import  wave
@@ -126,7 +127,7 @@ def audio_test(request):
 @csrf_exempt
 def ajax_patient(request):
     with connection.cursor() as c:
-        c.execute("select patient_name,patient_sex, patient_age from patient")
+        c.execute("select patient_name,patient_sex, patient_age,patient_id from patient")
         patients = c.fetchall()
         print(patients)
     return JsonResponse(patients, safe=False)
@@ -134,9 +135,17 @@ def ajax_patient(request):
 
 def ajax_patient_info(request):
     with connection.cursor() as c:
-        c.execute("select patient_name,patient_sex,patient_age from patient where patient_name=%s" [p_name])
+        c.execute("select patient_name,patient_sex,patient_age,patient_id from patient where patient_name=%s" [p_name])
         patient_info = c.fetchall()
     return JsonResponse(patient_info, safe=False)
+
+
+def ajax_report_detail(request):
+    with connection.cursor() as c:
+        c.execute("select * from report_detail where report_id = '0'")
+        report_detail = c.fetchall()
+        print(report_detail)
+    return JsonResponse(report_detail, safe=False)
 
 
 def upload_file(request):
@@ -158,3 +167,24 @@ def upload_file(request):
             return HttpResponse("upload over!")
     else:
         return render(request, 'upload.html')
+
+
+def run_py(request):
+    if request.method == "POST":
+        os.system('D:\\python\\python.exe E:\\workspace_django\\mysite\\static\\py\\audio_transfer.py')
+
+        return render(request, 'temp.html')
+
+
+def insert_into_mysql(request):
+    if request.method == "POST":
+        print((request.POST))
+        patient_id = request.POST.get('table_patient_id')
+
+        department_name = request.POST.get('department_name')
+        check_item = request.POST.get('check_item')
+        machine_number = request.POST.get('machine_number')
+        print(patient_id,department_name,check_item,machine_number)
+        #create = ReportDetail.objects.create(patient_id=patient_id, department_name=department_name, check_item=check_item, machine_number=machine_number)
+        #print(type(create),create)
+        return HttpResponse("ok")

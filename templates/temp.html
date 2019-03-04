@@ -9,12 +9,7 @@
     <link rel="stylesheet" href="{% static "./vendor/simple-line-icons/css/simple-line-icons.css" %}">
     <link rel="stylesheet" href="{% static "./vendor/font-awesome/css/fontawesome-all.min.css" %}">
     <link rel="stylesheet" href="{% static "./css/styles.css" %}">
-    <script language="javascript">
-        function exec1 (command) {
-            var ws = new ActiveXObject("WScript.Shell");
-            ws.exec(command);
-        }
-    </script>
+
 
 
 </head>
@@ -396,14 +391,37 @@ RandomKey.idx=0;
                                         <textarea id="translate_to_word" class="form-control form-control-lg" rows="6" placeholder="文字输出结果" ></textarea><br>
 
                                         <div align="center">
-                                            <button id="make_report" type="button" class="btn btn-rounded btn-primary btn-lg" onclick="exec1('D:\\python\\pythonw.exe E:\\workspace_django\\mysite\\static\\py\\audio_transfer.py')">文字转换</button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                            <button id="make_report" type="button" class="btn btn-rounded btn-primary btn-lg" onclick="exec1()">文字转换</button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 
-                                            <button id="make_report" type="button" class="btn btn-rounded btn-primary btn-lg" onclick="show()">生成报告</button>
+                                            <button id="make_report" type="button" class="btn btn-rounded btn-primary btn-lg" onclick="make_report()">生成报告</button>
                                             <script type="text/javascript">
-                                                function show()
+                                                function make_report()
                                                 {
-                                                    var htmlobj=$.ajax({url:"{% static "./test.txt" %}",scriptCharset: 'utf-8',async:false});
-                                                    $("#translate_to_word").html(htmlobj.responseText);
+                                                    {
+                                                        $.ajax({
+                                                            type: "post",
+                                                            url: "/ajax_report_detail",
+                                                            dataType: "json",
+                                                            success: function (data) {
+                                                                $("#size_right_UL").attr("value", data[0][5]);
+                                                                $("#size_right_LR").attr("value", data[0][6]);
+                                                                $("#size_right_FB").attr("value", data[0][7]);
+                                                                $("#size_left_UL").attr("value", data[0][8]);
+                                                                $("#size_left_LR").attr("value", data[0][9]);
+                                                                $("#size_left_FB").attr("value", data[0][10]);
+                                                                $("#size_thickness").attr("value", data[0][11]);
+                                                                $("#size_normal").attr("value", data[0][12]);
+                                                                $("#substantial_echo").attr("value", data[0][14]);
+                                                                $("#lump_echo").attr("value", data[0][15]);
+                                                                $("#blood_flow_distribution").attr("value", data[0][16]);
+                                                                $("#blood_flow_spectrum").attr("value", data[0][17]);
+                                                                $("#left_PSV").attr("value", data[0][18]);
+                                                                $("#left_EDV").attr("value", data[0][19]);
+                                                                $("#right_PSV").attr("value", data[0][20]);
+                                                                $("#right_EDV").attr("value", data[0][21]);
+                                                            }
+                                                        });
+                                                    }
 
                                                 }
                                             </script>
@@ -471,7 +489,10 @@ RandomKey.idx=0;
                                             </li>
                                         </ul>
 
+                                        <! 甲状腺报告>
                                         <div class="tab-content">
+                                            <form  method="post">
+{#                                            {% csrf_token %}#}
                                             <div class="tab-pane active" id="home" role="tabpanel">
                                                 <! 表格框架，可能换成一堆空栏>
                                                 <! 患者信息 >
@@ -479,12 +500,13 @@ RandomKey.idx=0;
                                                     <div class="col-md-12 ">
                                                         <div class="form-group">
                                                             <div><label>患者信息</label></div>
+                                                            <input id="table_patient_id" name="table_patient_id" class="to_report" type="text"  value="0"  style="display: none">
                                                             <div class = "col-md-4" style="float:left">
                                                                 <div class="input-group mb-3">
                                                                     <div class="input-group-prepend">
                                                                         <span class="input-group-text">姓&nbsp;&nbsp;&nbsp;&nbsp;名</span>
                                                                     </div>
-                                                                    <input id="table_patient_name" type="text" class="form-control" placeholder="请输入姓名">
+                                                                    <input id="table_patient_name" name="table_patient_name"  type="text" class="form-control" placeholder="请输入姓名">
                                                                 </div>
                                                             </div>
                                                             <div class = "col-md-4" style="float:left">
@@ -511,7 +533,7 @@ RandomKey.idx=0;
                                                                     <div class="input-group-prepend">
                                                                         <span class="input-group-text">科&nbsp;&nbsp;&nbsp;&nbsp;别</span>
                                                                     </div>
-                                                                    <input type="text" class="form-control" placeholder="门诊">
+                                                                    <input id="department_name" name="department_name" type="text" class="form-control to_report" placeholder="门诊">
                                                                 </div>
                                                             </div>
                                                             <div class = "col-md-4" style="float:left">
@@ -519,7 +541,7 @@ RandomKey.idx=0;
                                                                     <div class="input-group-prepend">
                                                                         <span class="input-group-text">门诊号</span>
                                                                     </div>
-                                                                    <input type="text" class="form-control" placeholder="1111111">
+                                                                    <input type="text" name="door_number" class="form-control to_report" placeholder="1111111">
                                                                 </div>
                                                             </div>
                                                             <div class = "col-md-4" style="float:left">
@@ -527,7 +549,7 @@ RandomKey.idx=0;
                                                                     <div class="input-group-prepend">
                                                                         <span class="input-group-text">检查号</span>
                                                                     </div>
-                                                                    <input type="text" class="form-control" placeholder="1111111">
+                                                                    <input type="text" name="check_number" class="form-control to_report" placeholder="1111111">
                                                                 </div>
                                                             </div>
                                                             <div class = "col-md-4" style="float:left">
@@ -535,7 +557,7 @@ RandomKey.idx=0;
                                                                     <div class="input-group-prepend">
                                                                         <span class="input-group-text">检查项目</span>
                                                                     </div>
-                                                                    <input type="text" class="form-control" placeholder="甲状腺超声">
+                                                                    <input id="check_item" name="check_item" type="text" class="form-control  to_report" placeholder="甲状腺超声">
                                                                 </div>
                                                             </div>
                                                             <div class = "col-md-4" style="float:left">
@@ -543,7 +565,7 @@ RandomKey.idx=0;
                                                                     <div class="input-group-prepend">
                                                                         <span class="input-group-text">检查机器</span>
                                                                     </div>
-                                                                    <select id="single-select" class="form-control">
+                                                                    <select id="machine_number" name="machine_number" class="form-control to_report">
                                                                         <option>E133-1</option>
                                                                         <option>2</option>
                                                                         <option>3</option>
@@ -568,7 +590,7 @@ RandomKey.idx=0;
                                                                     <div class="input-group-prepend">
                                                                         <span class="input-group-text">上下径</span>
                                                                     </div>
-                                                                    <input type="text" class="form-control" placeholder="N/A">
+                                                                    <input id="size_right_UL" name="size_right_UL" type="text" class="form-control to_report" placeholder="N/A">
                                                                     <div class="input-group-append">
                                                                         <span class="input-group-text">mm</span>
                                                                     </div>
@@ -579,7 +601,7 @@ RandomKey.idx=0;
                                                                     <div class="input-group-prepend">
                                                                         <span class="input-group-text">左右径</span>
                                                                     </div>
-                                                                    <input type="text" class="form-control" placeholder="N/A">
+                                                                    <input id="size_right_LR" name="size_right_LR" type="text" class="form-control to_report" placeholder="N/A">
                                                                     <div class="input-group-append">
                                                                         <span class="input-group-text">mm</span>
                                                                     </div>
@@ -590,7 +612,7 @@ RandomKey.idx=0;
                                                                     <div class="input-group-prepend">
                                                                         <span class="input-group-text">前后径</span>
                                                                     </div>
-                                                                    <input type="text" class="form-control" placeholder="N/A">
+                                                                    <input id="size_right_FB" name="size_right_FB" type="text" class="form-control to_report" placeholder="N/A">
                                                                     <div class="input-group-append">
                                                                         <span class="input-group-text">mm</span>
                                                                     </div>
@@ -609,7 +631,7 @@ RandomKey.idx=0;
                                                                     <div class="input-group-prepend">
                                                                         <span class="input-group-text">上下径</span>
                                                                     </div>
-                                                                    <input type="text" class="form-control" placeholder="N/A">
+                                                                    <input id="size_left_UL" type="text" class="form-control to_report" placeholder="N/A">
                                                                     <div class="input-group-append">
                                                                         <span class="input-group-text">mm</span>
                                                                     </div>
@@ -620,7 +642,7 @@ RandomKey.idx=0;
                                                                     <div class="input-group-prepend">
                                                                         <span class="input-group-text">左右径</span>
                                                                     </div>
-                                                                    <input type="text" class="form-control" placeholder="N/A">
+                                                                    <input id="size_left_LR" type="text" class="form-control to_report" placeholder="N/A">
                                                                     <div class="input-group-append">
                                                                         <span class="input-group-text">mm</span>
                                                                     </div>
@@ -631,7 +653,7 @@ RandomKey.idx=0;
                                                                     <div class="input-group-prepend">
                                                                         <span class="input-group-text">前后径</span>
                                                                     </div>
-                                                                    <input type="text" class="form-control" placeholder="N/A">
+                                                                    <input id="size_left_FB" type="text" class="form-control to_report" placeholder="N/A">
                                                                     <div class="input-group-append">
                                                                         <span class="input-group-text">mm</span>
                                                                     </div>
@@ -650,7 +672,7 @@ RandomKey.idx=0;
                                                                     <div class="input-group-prepend">
                                                                         <span class="input-group-text">厚&nbsp;&nbsp;&nbsp;&nbsp;度</span>
                                                                     </div>
-                                                                    <input type="text" class="form-control" placeholder="N/A">
+                                                                    <input id="size_thickness" type="text" class="form-control to_report" placeholder="N/A">
                                                                     <div class="input-group-append">
                                                                         <span class="input-group-text">mm</span>
                                                                     </div>
@@ -669,7 +691,7 @@ RandomKey.idx=0;
                                                                     <div class="input-group-prepend">
                                                                         <span class="input-group-text">大&nbsp;&nbsp;&nbsp;&nbsp;小</span>
                                                                     </div>
-                                                                    <input type="text" class="form-control" placeholder="正常">
+                                                                    <input id="size_normal" type="text" class="form-control to_report" placeholder="正常">
                                                                 </div>
                                                             </div>
                                                             <div class = "col-md-4" style="float:left">
@@ -677,12 +699,12 @@ RandomKey.idx=0;
                                                                     <div class="input-group-prepend">
                                                                         <span class="input-group-text">实质回声</span>
                                                                     </div>
-                                                                    <input type="text" class="form-control" placeholder="均匀">
+                                                                    <input id="substantial_echo" type="text" class="form-control to_report" placeholder="均匀">
                                                                 </div>
                                                             </div>
                                                             <div class = "col-md-4" style="float:left">
                                                                 <div class="input-group mb-3">
-                                                                    <input type="text" class="form-control" placeholder="未见明确">
+                                                                    <input id="lump_echo" type="text" class="form-control to_report" placeholder="未见明确">
                                                                     <div class="input-group-append">
                                                                         <span class="input-group-text">肿块回声</span>
                                                                     </div>
@@ -702,7 +724,7 @@ RandomKey.idx=0;
                                                                     <div class="input-group-prepend">
                                                                         <span class="input-group-text">血流分布</span>
                                                                     </div>
-                                                                    <input type="text" class="form-control" placeholder="正常">
+                                                                    <input id="blood_flow_distribution" type="text" class="form-control to_report" placeholder="正常">
                                                                 </div>
                                                             </div>
                                                             <div class = "col-md-6" style="float:left">
@@ -710,7 +732,7 @@ RandomKey.idx=0;
                                                                     <div class="input-group-prepend">
                                                                         <span class="input-group-text">血流频谱</span>
                                                                     </div>
-                                                                    <input type="text" class="form-control" placeholder="正常">
+                                                                    <input id="blood_flow_spectrum" type="text" class="form-control to_report" placeholder="正常">
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -720,13 +742,13 @@ RandomKey.idx=0;
                                                 <div class="row">
                                                     <div class="col-md-12 ">
                                                         <div class="form-group">
-                                                            <div><label>右侧动脉</label></div>
+                                                            <div><label>左侧动脉</label></div>
                                                             <div class = "col-md-4" style="float:left">
                                                                 <div class="input-group mb-3">
                                                                     <div class="input-group-prepend">
                                                                         <span class="input-group-text">PSV=</span>
                                                                     </div>
-                                                                    <input type="text" class="form-control" placeholder="N/A">
+                                                                    <input id="left_PSV" type="text" class="form-control to_report" placeholder="N/A">
                                                                     <div class="input-group-append">
                                                                         <span class="input-group-text">cm/s</span>
                                                                     </div>
@@ -737,7 +759,7 @@ RandomKey.idx=0;
                                                                     <div class="input-group-prepend">
                                                                         <span class="input-group-text">EDV=</span>
                                                                     </div>
-                                                                    <input type="text" class="form-control" placeholder="N/A">
+                                                                    <input id="left_EDV" type="text" class="form-control to_report" placeholder="N/A">
                                                                     <div class="input-group-append">
                                                                         <span class="input-group-text">cm/s</span>
                                                                     </div>
@@ -751,13 +773,13 @@ RandomKey.idx=0;
                                                 <div class="row">
                                                     <div class="col-md-12 ">
                                                         <div class="form-group">
-                                                            <div><label>左侧动脉</label></div>
+                                                            <div><label>右侧动脉</label></div>
                                                             <div class = "col-md-4" style="float:left">
                                                                 <div class="input-group mb-3">
                                                                     <div class="input-group-prepend">
                                                                         <span class="input-group-text">PSV=</span>
                                                                     </div>
-                                                                    <input type="text" class="form-control" placeholder="N/A">
+                                                                    <input id="right_PSV" type="text" class="form-control to_report" placeholder="N/A">
                                                                     <div class="input-group-append">
                                                                         <span class="input-group-text">cm/s</span>
                                                                     </div>
@@ -768,7 +790,7 @@ RandomKey.idx=0;
                                                                     <div class="input-group-prepend">
                                                                         <span class="input-group-text">EDV=</span>
                                                                     </div>
-                                                                    <input type="text" class="form-control" placeholder="N/A">
+                                                                    <input id="right_EDV" type="text" class="form-control to_report" placeholder="N/A">
                                                                     <div class="input-group-append">
                                                                         <span class="input-group-text">cm/s</span>
                                                                     </div>
@@ -785,7 +807,7 @@ RandomKey.idx=0;
                                                             <div><label>诊断意见</label></div>
                                                             <div class = "col-md-12" style="float:left">
                                                                 <div class="input-group mb-3">
-                                                                     <textarea id="textarea" class="form-control" rows="6" placeholder="诊断意见"></textarea>
+                                                                     <textarea id="diagnosis" class="form-control to_report" rows="6" placeholder="诊断意见"></textarea>
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -801,7 +823,7 @@ RandomKey.idx=0;
                                                                     <div class="input-group-prepend">
                                                                         <span class="input-group-text">审核医师</span>
                                                                     </div>
-                                                                    <input type="text" class="form-control" placeholder="xxx">
+                                                                    <input id="review_physician" type="text" class="form-control to_report" placeholder="xxx">
                                                                 </div>
                                                             </div>
                                                             <script src="{% static "./vendor/jquery/jquery.min.js" %}"></script>
@@ -811,14 +833,15 @@ RandomKey.idx=0;
                                                                     <div class="input-group-prepend">
                                                                         <span class="input-group-text">检查日期</span>
                                                                     </div>
-                                                                    <input type="date" id="date_info" class="form-control" val="">
+                                                                    <input type="date" id="check_date" class="form-control to_report" value="">
                                                                     <script type="text/javascript">
                                                                         $(document).ready(function () {
                                                                             var time = new Date();
                                                                             var day =("0"+time.getDate()).slice(-2);
-                                                                            var month =("0"+time.getMonth()+1).slice(-2);
+                                                                            var month =("0"+(time.getMonth()-(-1)).toString()).slice(-2);
                                                                             var today = time.getFullYear()+"-"+(month)+"-"+(day);
-                                                                            $('#date_info').val(today);
+                                                                            $('#check_date').attr("value",today);
+                                                                            console.log(day,month);
                                                                         })
                                                                     </script>
                                                                 </div>
@@ -829,10 +852,36 @@ RandomKey.idx=0;
 
 
                                                 <div align="right">
-                                                    <button id="save_table" type="button" class="btn btn-rounded btn-primary btn-lg">保存报告</button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                                    <button id="save_table"  class="btn btn-rounded btn-primary btn-lg">保存报告</button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                                                     <script src="{% static "./vendor/jquery/jquery.min.js" %}"></script>
                                                     <script type="text/javascript">
                                                         $("#save_table").on('click', function(){
+                                                            var str_report = '\{';
+                                                            alert('0')
+                                                            var list=$(".to_report");
+                                                            for(var i=0;i<list.length;i++){
+                                                                str_report = str_report.concat("\"")
+                                                                str_report = str_report.concat(list[i].name)
+                                                                str_report = str_report.concat("\"\:\"")
+                                                                if(list[i].value==''){
+                                                                    str_report = str_report.concat(list[i].placeholder)
+                                                                }else{
+                                                                    str_report = str_report.concat(list[i].value)
+                                                                }
+                                                            str_report = str_report.concat("\"\,")
+
+                                                            }
+                                                            str_report = str_report.concat("\}")
+
+                                                            console.log(str_report);
+                                                            alert(str_report);
+                                                            $.ajax({
+                                                                type : "post",
+                                                                url : "/insert_into_mysql",
+                                                                data : {
+                                                                    string : str_report
+                                                                }
+                                                            });
                                                             $("#p_save_notice").html("保存成功！");
                                                         });
                                                     </script>
@@ -840,6 +889,8 @@ RandomKey.idx=0;
                                                 </div>
 
                                             </div>
+                                            </form>
+
 
                                             <div class="tab-pane" id="profile" role="tabpanel">
                                                 2. Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure
@@ -871,6 +922,21 @@ RandomKey.idx=0;
 <script src="{% static "./vendor/chart.js/chart.min.js" %}"></script>
 <script src="{% static "./js/carbon.js" %}"></script>
 <script src="{% static "./js/demo.js" %}"></script>
+
+
+<script language="javascript">
+    function exec1 () {
+        $.ajax({
+            type:"post",
+            url:"/run_py",
+            success: function (){
+                var htmlobj=$.ajax({url:"{% static "./test.txt" %}",scriptCharset: 'utf-8',async:false});
+                $("#translate_to_word").html(htmlobj.responseText);
+            }
+        })
+    }
+</script>
+
 
 <! 患者选择下拉菜单联动mysql>
 <script>
@@ -904,6 +970,7 @@ RandomKey.idx=0;
                 var name = document.getElementById("patient-select").value;
                 for (var i=0;i<data.length;i++){
                     if(name == data[i][0]){
+                        $("#table_patient_id").attr("value",data[i][3])
                         $("#table_patient_name").attr("value",name);
                         $("#table_patient_age").attr("value",data[i][2]);
                         if(data[i][1]==1){
@@ -982,6 +1049,7 @@ $(window).bind("error",function(e){
 	    		recblob[id]={blob:blob,set:$.extend({},rec.set),time:time};
 	    		batCall&&batCall();
 	    		recdown(id);
+
 	    	},function(s){
 	    		reclog("失败："+s);
 	    		batCall&&batCall();
