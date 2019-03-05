@@ -12,6 +12,7 @@ from django import forms
 from cmdb.models import ReportDetail
 import json
 
+
 from aip import AipSpeech
 import  wave
 import threading
@@ -51,8 +52,20 @@ def forms(request):
     return render(request, "forms.html",)
 
 
-def temp(request):
-    return render(request, "temp.html",)
+def a_report_input(request):
+    return render(request, "a_report_input.html",)
+
+
+def a_recognition(request):
+    return render(request, "a_recognition.html",)
+
+
+def a_extraction(request):
+    return render(request, "a_extraction.html",)
+
+
+def a_diagnosis(request):
+    return render(request, "a_diagnosis.html",)
 
 
 def registered(request):
@@ -106,7 +119,7 @@ def login(request):
         if re is not None:
             auth.login(request, re)
             print(re)
-            return redirect("/temp", {'user': re})
+            return redirect("/a_report_input", {'user': re})
         else:
             return render(request, 'login.html', {'login_error': '用户名或密码错误'})
     return render(request, "login.html",)
@@ -114,11 +127,15 @@ def login(request):
 
 def logout(request):
     auth.logout(request)
-    return render(request, "temp.html")
+    return render(request, "a_report_input.html")
 
 
 def xx(request):
     return render(request, "to_use_py_test.html",)
+
+def xxx(request):
+
+    return JsonResponse("", safe=False)
 
 
 def audio_test(request):
@@ -174,7 +191,7 @@ def run_py(request):
     if request.method == "POST":
         os.system('D:\\python\\python.exe E:\\workspace_django\\mysite\\static\\py\\audio_transfer.py')
         os.system('D:\\python\\python.exe E:\\workspace_django\\mysite\\static\\py\\word_cut_test.py')
-        return render(request, 'temp.html')
+        return render(request, 'a_report_input.html')
 
 
 def insert_into_mysql(request):
