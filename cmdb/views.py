@@ -56,6 +56,16 @@ def a_report_input(request):
     return render(request, "a_report_input.html",)
 
 
+def a_report_input_submit(request):
+    if request.method == "POST":
+        input_str = request.POST.get("report_input")
+        print(input_str)
+    print('helloworld')
+    result_str = 'a'+input_str
+    print(result_str)
+    return JsonResponse(result_str, safe=False)
+
+
 def a_recognition(request):
     return render(request, "a_recognition.html",)
 

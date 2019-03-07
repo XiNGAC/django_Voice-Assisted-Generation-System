@@ -28,6 +28,7 @@ urlpatterns = [
     url(r'^a_recognition/', views.a_recognition, name='a_recognition'),
     url(r'^a_extraction/', views.a_extraction, name='a_extraction'),
     url(r'^a_diagnosis/', views.a_diagnosis, name='a_diagnosis'),
+    url(r'^a_report_input_submit$', views.a_report_input_submit, name='a_report_input_submit'),
     # url(r'^login/', views.login, name='login'),
     url(r'^login/', views.login, name='login'),
     url(r'^registered/', views.registered, name='registered'),
