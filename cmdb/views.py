@@ -56,26 +56,49 @@ def a_report_input(request):
     return render(request, "a_report_input.html",)
 
 
-def a_report_input_submit(request):
-    if request.method == "POST":
-        input_str = request.POST.get("report_input")
-        print(input_str)
-    print('helloworld')
-    result_str = 'a'+input_str
-    print(result_str)
-    return JsonResponse(result_str, safe=False)
+
 
 
 def a_recognition(request):
     return render(request, "a_recognition.html",)
 
 
+def a_recognition_submit(request):
+    if request.method == "POST":
+        input_str = request.POST.get("report_input")
+        print(input_str)
+    print('helloworld')
+    result_str = 'recognition submit as '+input_str
+    print(result_str)
+    return JsonResponse(result_str, safe=False)
+
+
 def a_extraction(request):
     return render(request, "a_extraction.html",)
 
 
+def a_extraction_submit(request):
+    if request.method == "POST":
+        input_str = request.POST.get("report_input")
+        print(input_str)
+    print('helloworld')
+    result_str = 'extration submit as '+input_str
+    print(result_str)
+    return JsonResponse(result_str, safe=False)
+
+
 def a_diagnosis(request):
     return render(request, "a_diagnosis.html",)
+
+
+def a_diagnosis_submit(request):
+    if request.method == "POST":
+        input_str = request.POST.get("report_input")
+        print(input_str)
+    print('helloworld')
+    result_str = 'diagnosis submit as '+input_str
+    print(result_str)
+    return JsonResponse(result_str, safe=False)
 
 
 def registered(request):
