@@ -11,7 +11,14 @@ from django.forms import fields
 from django import forms
 from cmdb.models import ReportDetail
 import json
-
+from aip import AipSpeech
+import codecs
+import hashlib
+import base64
+import urllib
+from urllib import parse
+import time
+import urllib.request
 
 from aip import AipSpeech
 import  wave
@@ -54,9 +61,6 @@ def forms(request):
 
 def a_report_input(request):
     return render(request, "a_report_input.html",)
-
-
-
 
 
 def a_recognition(request):
@@ -166,8 +170,8 @@ def logout(request):
 def xx(request):
     return render(request, "to_use_py_test.html",)
 
-def xxx(request):
 
+def xxx(request):
     return JsonResponse("", safe=False)
 
 
@@ -222,9 +226,46 @@ def upload_file(request):
 
 def run_py(request):
     if request.method == "POST":
-        os.system('D:\\python\\python.exe E:\\workspace_django\\mysite\\static\\py\\audio_transfer.py')
-        os.system('D:\\python\\python.exe E:\\workspace_django\\mysite\\static\\py\\word_cut_test.py')
-        return render(request, 'a_report_input.html')
+        # os.system('D:\\python\\python.exe E:\\workspace_django\\mysite\\static\\py\\audio_transfer.py')
+        # os.system('D:\\python\\python.exe E:\\workspace_django\\mysite\\static\\py\\word_cut_test.py')
+        pwd = os.path.abspath(os.path.join(os.path.dirname("__file__"), os.path.pardir))
+
+        f = open(pwd+"/mysite/static/radio/test1.wav", 'rb')
+        file_content = f.read()
+        base64_audio = base64.b64encode(file_content)
+        body = parse.urlencode({'audio': base64_audio})
+
+        url = 'http://api.xfyun.cn/v1/service/v1/iat'
+        api_key = '9550b1014a2275ec83cf7eb72255db51'
+        param = {"engine_type": "sms16k", "aue": "raw"}
+
+        x_appid = '5c622e5b'
+        json_str = json.dumps(param).replace(' ', '')
+        print('json_str:{}'.format(json_str))
+        x_param = base64.b64encode(bytes(json_str, 'ascii'))
+        x_time = int(int(round(time.time() * 1000)) / 1000)
+        x_checksum_str = api_key + str(x_time) + str(x_param)[2:-1]
+        print('x_checksum_str:[{}]'.format(x_checksum_str))
+        x_checksum = hashlib.md5(x_checksum_str.encode(encoding='ascii')).hexdigest()
+        print('x_checksum:{}'.format(x_checksum))
+        x_header = {'X-Appid': x_appid,
+                    'X-CurTime': x_time,
+                    'X-Param': x_param,
+                    'X-CheckSum': x_checksum}
+
+        start_time = time.time()
+        req = urllib.request.Request(url, bytes(body, 'ascii'), x_header)
+        result = urllib.request.urlopen(req)
+        result = result.read()
+        print("used time: {}s".format(round(time.time() - start_time, 2)))
+        print('result:' + str(result.decode(encoding='UTF8')))
+        Jsondata = json.loads(result)
+        print(type(Jsondata))
+        string = ''.join(Jsondata['data'])
+        return JsonResponse(Jsondata['data'], safe=False)
+
+
+        # return render(request, 'a_report_input.html')
 
 
 def insert_into_mysql(request):
