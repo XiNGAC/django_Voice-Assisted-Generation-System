@@ -58,7 +58,7 @@ function submit_diagnosis(){
 // //     });
 
 function click_upload_button() {
-    $("#choose_files").click();
+    $("#xdaTanFileImg").click();
 }
 
 function upload_file_to_textarea(){
@@ -73,4 +73,42 @@ function upload_file_to_textarea(){
         console.log(this.result);//当读取完成之后会回调这个函数，然后此时文件的内容存储到了result中。直接操作即可。
         document.getElementById('translate_to_word').value=this.result;
     };
+}
+
+function xmTanUploadImg(obj) {
+    var file = obj.files[0];
+    console.log(obj);console.log(file);
+    console.log("file.size = " + file.size);  //file.size 单位为byte
+    var reader = new FileReader();
+    //读取文件过程方法
+    reader.onload = function (e) {
+        console.log("成功读取....");
+        var img = document.getElementById("xmTanImg");
+        img.src = e.target.result;
+        //或者 img.src = this.result;  //e.target == this
+    };
+    reader.readAsDataURL(file);
+    document.getElementById('run_ocr').style.display = 'block';
+}
+
+function run_ocr() {
+    var image_info = document.getElementById('xmTanImg');
+    var temp = image_info.src;
+    console.log(temp);
+    var reg = /base64,(\S*)/;
+    var reg_match = temp.match(reg)[1];
+    console.log(reg_match);
+    $.ajax({
+       type : "post",
+       url : "/run_ocr",
+       datatype : "json",
+       data: {
+           base64_pic : reg_match
+       },
+       success: function (data) {
+           console.info(data);
+           alert(data);
+           document.getElementById('result_translate_to_word').value= data;
+       }
+    });
 }

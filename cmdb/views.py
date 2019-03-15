@@ -19,6 +19,7 @@ import urllib
 from urllib import parse
 import time
 import urllib.request
+import requests
 
 from aip import AipSpeech
 import  wave
@@ -268,6 +269,43 @@ def run_py(request):
         # return render(request, 'a_report_input.html')
 
 
+def run_ocr(request):
+    if request.method == "POST":
+        f1_base64 = request.POST.get('base64_pic')
+        URL = "http://webapi.xfyun.cn/v1/service/v1/ocr/general"
+        APPID = "5c622e5b"
+        API_KEY = "20bc07cde0928d61e5c92b5867ab01fe"
+        curTime = str(int(time.time()))
+        param = {"language": "cn|en", "location": "false"}
+        param = json.dumps(param)
+        paramBase64 = base64.b64encode(param.encode('utf-8'))
+
+        m2 = hashlib.md5()
+        str1 = API_KEY + curTime + str(paramBase64, 'utf-8')
+        m2.update(str1.encode('utf-8'))
+        checkSum = m2.hexdigest()
+
+        header = {
+            'X-CurTime': curTime,
+            'X-Param': paramBase64,
+            'X-Appid': APPID,
+            'X-CheckSum': checkSum,
+            'Content-Type': 'application/x-www-form-urlencoded; charset=utf-8',
+        }
+
+        data = {
+            'image': f1_base64
+        }
+
+        r = requests.post(URL, data=data, headers=header)
+        result = str(r.content, 'utf-8')
+        jsondata = json.loads(result)
+        print(jsondata)
+        resultdata = jsondata['data']['block'][0]['line'][0]['word'][0]['content']
+        print(resultdata)
+        return JsonResponse(resultdata, safe=False);
+
+
 def insert_into_mysql(request):
     if request.method == "POST":
         print((request.POST.get('string')))
@@ -299,18 +337,18 @@ def insert_into_mysql(request):
         diagnosis = temp_json['diagnosis']
         review_physician = temp_json['review_physician']
         check_date = temp_json['check_date']
-        print(patient_id,department_name,check_item,machine_number,size_left_FB,size_thickness,left_EDV)
+        print(patient_id, department_name, check_item, machine_number, size_left_FB, size_thickness, left_EDV)
         create = ReportDetail.objects.create(patient_id=patient_id, department_name=department_name,
                                              check_item=check_item, machine_number=machine_number,
                                              size_right_ul=size_right_UL, size_right_lr=size_right_LR,
                                              size_right_fb=size_right_FB, size_left_ul=size_left_UL,
                                              size_left_lr=size_left_LR, size_left_fb=size_left_FB,
                                              size_thickness=size_thickness, size_normal=size_normal,
-                                             substantial_echo=substantial_echo,lump_echo=lump_echo,
+                                             substantial_echo=substantial_echo, lump_echo=lump_echo,
                                              blood_flow_distribution=blood_flow_distribution,
                                              blood_flow_spectrum=blood_flow_spectrum, left_psv=left_PSV,
                                              left_edv=left_EDV, right_psv=right_PSV, right_edv=right_EDV,
                                              diagnosis=diagnosis, review_physician=review_physician,
                                              check_date=check_date)
-        print(type(create),create)
+        print(type(create), create)
         return JsonResponse(temp_json, safe=False)

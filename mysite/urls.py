@@ -23,6 +23,7 @@ urlpatterns = [
     url(r'^admin/', admin.site.urls),
     # url(r'^$', views.temp),
     url(r'^index/', views.index),
+    url(r'^test/', views.test),
     url(r'^forms/', views.forms, name='forms'),
     url(r'^a_report_input/', views.a_report_input, name='a_report_input'),
     url(r'^a_recognition/', views.a_recognition, name='a_recognition'),
@@ -43,6 +44,7 @@ urlpatterns = [
     url(r'^ajax_report_detail$', views.ajax_report_detail),
     url(r'^upload/$', views.upload_file, name='upload_file'),
     url(r'^run_py$', views.run_py, name='run_py'),
+    url(r'^run_ocr$', views.run_ocr, name='run_ocr'),
     url(r'^insert_into_mysql$', views.insert_into_mysql, name='insert_into_mysql'),
 
     # path('admin/', admin.site.urls),
