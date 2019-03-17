@@ -7,6 +7,7 @@ from django.shortcuts import HttpResponse
 import os
 from django.contrib import auth
 from django.contrib.auth.models import User
+from django.template.loader import get_template
 from django.forms import fields
 from django import forms
 from cmdb.models import ReportDetail
@@ -20,6 +21,9 @@ from urllib import parse
 import time
 import urllib.request
 import requests
+import pdfkit
+from wkhtmltopdf.views import PDFTemplateView
+
 
 from aip import AipSpeech
 import  wave
@@ -31,6 +35,7 @@ import numpy as np
 from datetime import datetime
 import time
 # Create your views here.
+
 
 
 class UserForm(forms.Form):
@@ -54,6 +59,10 @@ def index(request):
 
 def test(request):
     return render(request, "test.html",)
+
+
+def pdf(request):
+    return render(request, "pdf.html",)
 
 
 def forms(request):
@@ -352,3 +361,34 @@ def insert_into_mysql(request):
                                              check_date=check_date)
         print(type(create), create)
         return JsonResponse(temp_json, safe=False)
+
+
+def save_pdf(request):
+    result = 'error'
+    if request.method == "POST":
+        data = dict()
+        print('1')
+        template = get_template('pdf.html')
+        html = template.render(data)
+        url = 'http://localhost:6000/test/'
+        filename = "sample_pdf.pdf"
+        confg = pdfkit.configuration(wkhtmltopdf=r'D:\wkhtmltopdf\bin\wkhtmltopdf.exe')
+        css = [r"E:\workspace_django\mysite\static\css\test.css", r"E:\workspace_django\mysite\static\css\styles.css"]
+        pdf = pdfkit.from_string(html, filename, css=css, configuration=confg)
+        # pdf = pdfkit.from_url(url, filename, configuration=confg)
+        response = HttpResponse(pdf, content_type='application/pdf')
+        response['Content-Disposition'] = 'attachment; filename="' + filename + '"'
+        return response
+        # pwd = os.path.abspath(os.path.join(os.path.dirname("__file__"), os.path.pardir))
+        # file = pwd+"/mysite/templates/test.html"
+        # print(file)
+        # pdf_dict = pwd+"/mysite/static/pdf/"
+        # print(pdf_dict)
+        # url = r'http://localhost:6000/test/'
+        # confg = pdfkit.configuration(wkhtmltopdf=r'D:\wkhtmltopdf\bin\wkhtmltopdf.exe')
+        # # pdfkit.from_url(url, dict+'temp.pdf', configuration=confg)
+        # pdfkit.from_file(file, pdf_dict+'temp.pdf', configuration=confg)
+        # result = 'success'
+        # print('success')
+        # return render(request, 'test.html')
+    return JsonResponse(result)

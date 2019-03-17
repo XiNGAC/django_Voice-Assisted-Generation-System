@@ -15,7 +15,7 @@ Including another URLconf
 """
 from django.conf.urls import url
 from django.contrib import admin
-
+from django_pdfkit import PDFView
 from django.urls import path
 from cmdb import views
 
@@ -24,6 +24,7 @@ urlpatterns = [
     # url(r'^$', views.temp),
     url(r'^index/', views.index),
     url(r'^test/', views.test),
+    url(r'^pdf/', views.pdf),
     url(r'^forms/', views.forms, name='forms'),
     url(r'^a_report_input/', views.a_report_input, name='a_report_input'),
     url(r'^a_recognition/', views.a_recognition, name='a_recognition'),
@@ -45,7 +46,9 @@ urlpatterns = [
     url(r'^upload/$', views.upload_file, name='upload_file'),
     url(r'^run_py$', views.run_py, name='run_py'),
     url(r'^run_ocr$', views.run_ocr, name='run_ocr'),
+    url(r'^save_pdf$', views.save_pdf, name='save_pdf'),
     url(r'^insert_into_mysql$', views.insert_into_mysql, name='insert_into_mysql'),
+    url(r'^my-pdf$', PDFView.as_view(template_name='test.html'), name='my-pdf'),
 
     # path('admin/', admin.site.urls),
 ]
