@@ -8,6 +8,7 @@ import os
 from django.contrib import auth
 from django.contrib.auth.models import User
 from django.template.loader import get_template
+from django.template import Context
 from django.forms import fields
 from django import forms
 from cmdb.models import ReportDetail
@@ -62,7 +63,16 @@ def test(request):
 
 
 def pdf(request):
-    return render(request, "pdf.html",)
+    # p_name = temp_json['table_patient_name']
+    # p_sex = temp_json['table_patient_sex']
+    # p_age = temp_json['table_patient_age']
+    # p_id = temp_json['table_patient_id']
+    p_name = 'zs'
+    p_sex = '男'
+    p_age = '30'
+    p_id = '1'
+    tempDic = {'p_name': p_name, 'p_sex': p_sex, 'p_age': p_age, 'p_id': p_id}
+    return render(request, "pdf.html",tempDic)
 
 
 def forms(request):
@@ -77,12 +87,22 @@ def a_recognition(request):
     return render(request, "a_recognition.html",)
 
 
-def a_recognition_submit(request):
+def a_recognition_submit_table1(request):
     if request.method == "POST":
         input_str = request.POST.get("report_input")
         print(input_str)
     print('helloworld')
-    result_str = 'recognition submit as '+input_str
+    result_str = 'TABLE1: recognition submit as '+input_str
+    print(result_str)
+    return JsonResponse(result_str, safe=False)
+
+
+def a_recognition_submit_table2(request):
+    if request.method == "POST":
+        input_str = request.POST.get("report_input")
+        print(input_str)
+    print('helloworld')
+    result_str = 'TABLE2: recognition submit as '+input_str
     print(result_str)
     return JsonResponse(result_str, safe=False)
 
@@ -366,11 +386,20 @@ def insert_into_mysql(request):
 def save_pdf(request):
     result = 'error'
     if request.method == "POST":
+        temp_json = json.loads(request.POST.get('string'))
+        print(temp_json)
+        p_name = temp_json['table_patient_name']
+        p_sex = temp_json['table_patient_sex']
+        p_age = temp_json['table_patient_age']
+        p_id = temp_json['table_patient_id']
+        print(p_name, p_sex, p_age, p_id)
+        tempDic = {'p_name': p_name, 'p_sex': p_sex, 'p_age': p_age, 'p_id': p_id}
         data = dict()
         print('1')
         template = get_template('pdf.html')
-        html = template.render(data)
-        url = 'http://localhost:6000/test/'
+        html = template.render(tempDic)
+        # html = template.render(data)
+        url = 'http://localhost:6000/pdf/'
         filename = "sample_pdf.pdf"
         confg = pdfkit.configuration(wkhtmltopdf=r'D:\wkhtmltopdf\bin\wkhtmltopdf.exe')
         css = [r"E:\workspace_django\mysite\static\css\test.css", r"E:\workspace_django\mysite\static\css\styles.css"]
@@ -378,7 +407,7 @@ def save_pdf(request):
         # pdf = pdfkit.from_url(url, filename, configuration=confg)
         response = HttpResponse(pdf, content_type='application/pdf')
         response['Content-Disposition'] = 'attachment; filename="' + filename + '"'
-        return response
+        return redirect('/pdf', {'p_name': p_name , 'p_sex': p_sex, 'p_age': p_age, 'p_id': p_id})
         # pwd = os.path.abspath(os.path.join(os.path.dirname("__file__"), os.path.pardir))
         # file = pwd+"/mysite/templates/test.html"
         # print(file)

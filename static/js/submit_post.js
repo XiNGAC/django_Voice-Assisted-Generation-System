@@ -1,8 +1,10 @@
-function submit_recognition(){
-    var input_text = document.getElementById('translate_to_word').value;
+function submit_recognition(table){
+    var input_str = 'translate_to_word_'+table;
+    var input_text = document.getElementById(input_str).value;
+    var str_url = "/a_recognition_submit_"+ table;
     $.ajax({
        type : "post",
-       url : "/a_recognition_submit",
+       url : str_url,
        datatype : "json",
        data: {
            report_input : input_text
@@ -10,7 +12,8 @@ function submit_recognition(){
        success: function (data) {
            console.info(data);
            alert(data);
-           document.getElementById('result_translate_to_word').value= data;
+           var result_str = 'result_translate_to_word_'+table;
+           document.getElementById(result_str).value= data;
        }
     });
     // alert('1');
@@ -57,8 +60,9 @@ function submit_diagnosis(){
 // //         alert('click')
 // //     });
 
-function click_upload_button() {
-    $("#xdaTanFileImg").click();
+function click_upload_button(table) {
+    var name = "#xdaTanFileImg_"+table;
+    $(name).click();
 }
 
 function upload_file_to_textarea(){
@@ -75,7 +79,7 @@ function upload_file_to_textarea(){
     };
 }
 
-function xmTanUploadImg(obj) {
+function xmTanUploadImg(obj,table) {
     var file = obj.files[0];
     console.log(obj);console.log(file);
     console.log("file.size = " + file.size);  //file.size 单位为byte
@@ -83,16 +87,19 @@ function xmTanUploadImg(obj) {
     //读取文件过程方法
     reader.onload = function (e) {
         console.log("成功读取....");
-        var img = document.getElementById("xmTanImg");
+        var name = "xmTanImg_"+table;
+        var img = document.getElementById(name);
         img.src = e.target.result;
         //或者 img.src = this.result;  //e.target == this
     };
     reader.readAsDataURL(file);
-    document.getElementById('run_ocr').style.display = 'block';
+    var ocr_name = 'run_ocr_'+table;
+    document.getElementById(ocr_name).style.display = 'block';
 }
 
-function run_ocr() {
-    var image_info = document.getElementById('xmTanImg');
+function run_ocr(table) {
+    var input = 'xmTanImg_'+table;
+    var image_info = document.getElementById(input);
     var temp = image_info.src;
     console.log(temp);
     var reg = /base64,(\S*)/;
@@ -108,7 +115,8 @@ function run_ocr() {
        success: function (data) {
            console.info(data);
            alert(data);
-           document.getElementById('result_translate_to_word').value= data;
+           var name = 'translate_to_word_'+table;
+           document.getElementById(name).value= data;
        }
     });
 }
