@@ -26,6 +26,7 @@ urlpatterns = [
     url(r'^test/', views.test),
     url(r'^pdf/', views.pdf),
     url(r'^forms/', views.forms, name='forms'),
+    url(r'^check_report/', views.check_report, name='check_report'),
     url(r'^a_report_input/', views.a_report_input, name='a_report_input'),
     url(r'^a_recognition/', views.a_recognition, name='a_recognition'),
     url(r'^a_extraction/', views.a_extraction, name='a_extraction'),

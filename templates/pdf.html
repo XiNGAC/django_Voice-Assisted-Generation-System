@@ -10,25 +10,151 @@
 <div align="center" class="font-size-20">xx医院病历</div>
 <hr>
 <!病人信息>
-<div class="row font-label">
+<div class="font-label"> 患者信息</div>
+<hr style="height:4px;border:none;border-top:4px ridge royalblue;" />
+<div class="row">
     <div class="col-3">姓名：{{ p_name }}</div>
     <div class="col-3">性别：{{ p_sex }}</div>
     <div class="col-3">年龄：{{ p_age }}</div>
-    <div class="col-3">ID:{{ p_id }}</div>
+    <div class="col-3">病历ID:{{ p_id }}</div>
 </div>
-<hr>
-<!检查信息>
-<hr>
-<!诊断信息>
-<div class="font-label">超声描述</div>
+<div class="row">
+    <div class="col-3">科别:{{ p_department }}</div>
+    <div class="col-3">门诊号:{{ p_clinic }}</div>
+    <div class="col-3">检查号:{{ p_check_num }}</div>
+    <div class="col-3">检查项目:{{ p_check_item }}</div>
+</div>
+<div class="row">
+    <div class="col-3">检查机器:{{ p_machine }}</div>
+</div>
+<hr style="height:4px;border:none;border-top:4px ridge royalblue;" />
+<!甲状腺属性信息>
+<div class="font-label"> 甲状腺属性信息</div>
+<hr style="height:4px;border:none;border-top:4px ridge royalblue;" />
+<div class="font-label"> 甲状腺右叶</div>
+<div class="row">
+    <div class="col-3">前后径：{{ p_r_fb }}</div>
+    <div class="col-3">左右径：{{ p_r_lr }}</div>
+    <div class="col-3">形态：{{ p_r_shape }}</div>
+    <div class="col-3">回声:{{ p_r_echo }}</div>
+    </div>
+<div class="row">
+    <div class="col-3">回声分布:{{ p_r_echo_d }}</div>
+    <div class="col-3">边界:{{ p_r_edge }}</div>
+    <div class="col-3">表面:{{ p_r_surface }}</div>
+    <div class="col-3">包膜:{{ p_r_envelope }}</div>
+    </div>
+<div class="row">
+    <div class="col-3">CDFI:{{ p_r_cdfi }}</div>
+</div>
+<hr style="height:2px;border:none;border-top:2px ridge skyblue;" />
+<div class="font-label"> 甲状腺左叶</div>
+<div class="row">
+    <div class="col-3">前后径：{{ p_l_fb }}</div>
+    <div class="col-3">左右径：{{ p_l_lr }}</div>
+    <div class="col-3">形态：{{ p_l_shape }}</div>
+    <div class="col-3">回声:{{ p_l_echo }}</div>
+    </div>
+<div class="row">
+    <div class="col-3">回声分布:{{ p_l_echo_d }}</div>
+    <div class="col-3">边界:{{ p_l_edge }}</div>
+    <div class="col-3">表面:{{ p_l_surface }}</div>
+    <div class="col-3">包膜:{{ p_l_envelope }}</div>
+    </div>
+<div class="row">
+    <div class="col-3">CDFI:{{ p_l_cdfi }}</div>
+</div>
+<hr style="height:2px;border:none;border-top:2px ridge skyblue;" />
 
-<hr>
+<div class="font-label"> 甲状腺峡部</div>
+<div>峡部厚度：{{ p_thickness_size }}</div>
+
+<hr style="height:4px;border:none;border-top:4px ridge royalblue;" />
+<!甲状腺局灶病变信息>
+<div class="font-label">甲状腺局灶病变</div>
+<hr style="height:4px;border:none;border-top:4px ridge royalblue;" />
+<div class="font-label">甲状腺右侧</div>
+<div class="row">
+    <div class="col-2">位置补充：{{ p_cr_position }}</div>
+    <div class="col-2">多发结节类型：{{ p_cr_type }}</div>
+    <div class="col-2">个数：{{ p_cr_num }}</div>
+    <div class="col-2">大小:{{ p_cr_size }}</div>
+    <div class="col-2">生长:{{ p_cr_grow }}</div>
+    <div class="col-2">形状:{{ p_cr_shape }}</div>
+    </div>
+<div class="row">
+    <div class="col-2">边缘:{{ p_cr_edge }}</div>
+    <div class="col-2">边界:{{ p_cr_boundary }}</div>
+    <div class="col-2">内部回声:{{ p_cr_echo_inside }}</div>
+    <div class="col-2">内部结构：{{ p_cr_structure }}</div>
+    <div class="col-2">后方回声：{{ p_cr_echo_back }}</div>
+    <div class="col-2">CDFI：{{ p_cr_cdfi }}</div>
+    </div>
+<div class="row">
+    <div class="col-2">钙化:{{ p_cr_cal }}</div>
+    <div class="col-2">强回声:{{ p_cr_echo_strong }}</div>
+    <div class="col-2">声影:{{ p_cr_sound }}</div>
+    <div class="col-2">声晕:{{ p_cr_halo }}</div>
+    <div class="col-2">补充:{{ p_cr_supplement }}</div>
+</div>
+<hr style="height:2px;border:none;border-top:2px ridge skyblue;" />
+<div class="font-label">甲状腺左侧</div>
+<div class="row">
+    <div class="col-2">位置补充：{{ p_cl_position }}</div>
+    <div class="col-2">多发结节类型：{{ p_cl_type }}</div>
+    <div class="col-2">个数：{{ p_cl_num }}</div>
+    <div class="col-2">大小:{{ p_cl_size }}</div>
+    <div class="col-2">生长:{{ p_cl_grow }}</div>
+    <div class="col-2">形状:{{ p_cl_shape }}</div>
+    </div>
+<div class="row">
+    <div class="col-2">边缘:{{ p_cl_edge }}</div>
+    <div class="col-2">边界:{{ p_cl_boundary }}</div>
+    <div class="col-2">内部回声:{{ p_cl_echo_inside }}</div>
+    <div class="col-2">内部结构：{{ p_cl_structure }}</div>
+    <div class="col-2">后方回声：{{ p_cl_echo_back }}</div>
+    <div class="col-2">CDFI：{{ p_cl_cdfi }}</div>
+    </div>
+<div class="row">
+    <div class="col-2">钙化:{{ p_cl_cal }}</div>
+    <div class="col-2">强回声:{{ p_cl_echo_strong }}</div>
+    <div class="col-2">声影:{{ p_cl_sound }}</div>
+    <div class="col-2">声晕:{{ p_cl_halo }}</div>
+    <div class="col-2">补充:{{ p_cl_supplement }}</div>
+</div>
+<hr style="height:2px;border:none;border-top:2px ridge skyblue;" />
+<div class="font-label">甲状腺峡部</div>
+<div class="row">
+    <div class="col-2">位置补充：{{ p_ct_position }}</div>
+    <div class="col-2">多发结节类型：{{ p_ct_type }}</div>
+    <div class="col-2">个数：{{ p_ct_num }}</div>
+    <div class="col-2">大小:{{ p_ct_size }}</div>
+    <div class="col-2">生长:{{ p_ct_grow }}</div>
+    <div class="col-2">形状:{{ p_ct_shape }}</div>
+    </div>
+<div class="row">
+    <div class="col-2">边缘:{{ p_ct_edge }}</div>
+    <div class="col-2">边界:{{ p_ct_boundary }}</div>
+    <div class="col-2">内部回声:{{ p_ct_echo_inside }}</div>
+    <div class="col-2">内部结构：{{ p_ct_structure }}</div>
+    <div class="col-2">后方回声：{{ p_ct_echo_back }}</div>
+    <div class="col-2">CDFI：{{ p_ct_cdfi }}</div>
+    </div>
+<div class="row">
+    <div class="col-2">钙化:{{ p_ct_cal }}</div>
+    <div class="col-2">强回声:{{ p_ct_echo_strong }}</div>
+    <div class="col-2">声影:{{ p_ct_sound }}</div>
+    <div class="col-2">声晕:{{ p_ct_halo }}</div>
+    <div class="col-2">补充:{{ p_ct_supplement }}</div>
+</div>
+
+<hr style="height:4px;border:none;border-top:4px ridge royalblue;" />
 <!底部信息>
 <div class="row" >
     <div class="col-3"></div>
     <div class="col-3"></div>
-    <div class="col-3" style="float:right">检查时间：</div>
-    <div class="col-3" style="float:right">主治医师：</div>
+    <div class="col-3" style="float:right">检查时间：{{ check_date }}</div>
+    <div class="col-3" style="float:right">主治医师：{{ review_physician }}</div>
 
 
 

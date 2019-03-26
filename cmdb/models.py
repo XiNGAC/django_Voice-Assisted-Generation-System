@@ -1,4 +1,4 @@
-#database version: 5.7.21
+# database version: 5.7.21
 # This is an auto-generated Django model module.
 # You'll have to do the following manually to clean this up:
 #   * Rearrange models' order
@@ -75,6 +75,31 @@ class AuthUserUserPermissions(models.Model):
         unique_together = (('user', 'permission'),)
 
 
+class ChangeInfo(models.Model):
+    change_id = models.AutoField(primary_key=True)
+    position = models.CharField(max_length=255, blank=True, null=True)
+    type = models.CharField(max_length=255, blank=True, null=True)
+    num = models.CharField(max_length=255, blank=True, null=True)
+    size = models.CharField(max_length=255, blank=True, null=True)
+    grow = models.CharField(max_length=255, blank=True, null=True)
+    shape = models.CharField(max_length=255, blank=True, null=True)
+    edge = models.CharField(max_length=255, blank=True, null=True)
+    boundary = models.CharField(max_length=255, blank=True, null=True)
+    echo_inside = models.CharField(max_length=255, blank=True, null=True)
+    structure = models.CharField(max_length=255, blank=True, null=True)
+    echo_back = models.CharField(max_length=255, blank=True, null=True)
+    cdfi = models.CharField(max_length=255, blank=True, null=True)
+    calcification = models.CharField(max_length=255, blank=True, null=True)
+    echo_strong = models.CharField(max_length=255, blank=True, null=True)
+    sound = models.CharField(max_length=255, blank=True, null=True)
+    halo = models.CharField(max_length=255, blank=True, null=True)
+    supplement = models.CharField(max_length=255, blank=True, null=True)
+
+    class Meta:
+        managed = False
+        db_table = 'change_info'
+
+
 class CmdbUserinfo(models.Model):
     user = models.CharField(max_length=32)
     pwd = models.CharField(max_length=32)
@@ -128,6 +153,23 @@ class DjangoSession(models.Model):
         db_table = 'django_session'
 
 
+class NormalInfo(models.Model):
+    normal_id = models.AutoField(primary_key=True)
+    size_fb = models.CharField(db_column='size_FB', max_length=255, blank=True, null=True)  # Field name made lowercase.
+    size_lr = models.CharField(db_column='size_LR', max_length=255, blank=True, null=True)  # Field name made lowercase.
+    shape = models.CharField(max_length=255, blank=True, null=True)
+    echo = models.CharField(max_length=255, blank=True, null=True)
+    echo_division = models.CharField(max_length=255, blank=True, null=True)
+    edge = models.CharField(max_length=255, blank=True, null=True)
+    surface = models.CharField(max_length=255, blank=True, null=True)
+    envelope = models.CharField(max_length=255, blank=True, null=True)
+    cdfi = models.CharField(max_length=255, blank=True, null=True)
+
+    class Meta:
+        managed = False
+        db_table = 'normal_info'
+
+
 class Patient(models.Model):
     patient_id = models.CharField(primary_key=True, max_length=255)
     patient_name = models.CharField(max_length=20)
@@ -141,31 +183,22 @@ class Patient(models.Model):
 
 
 class ReportDetail(models.Model):
-    report_id = models.IntegerField(primary_key=True)
+    report_id = models.AutoField(primary_key=True)
     patient_id = models.CharField(max_length=255)
     department_name = models.CharField(max_length=255)
+    check_number = models.CharField(max_length=20, blank=True, null=True)
+    clinic_number = models.CharField(max_length=20, blank=True, null=True)
     check_item = models.CharField(max_length=255)
     machine_number = models.CharField(max_length=20)
-    size_right_ul = models.FloatField(db_column='size_right_UL', blank=True, null=True)  # Field name made lowercase.
-    size_right_lr = models.FloatField(db_column='size_right_LR', blank=True, null=True)  # Field name made lowercase.
-    size_right_fb = models.FloatField(db_column='size_right_FB', blank=True, null=True)  # Field name made lowercase.
-    size_left_ul = models.FloatField(db_column='size_left_UL', blank=True, null=True)  # Field name made lowercase.
-    size_left_lr = models.FloatField(db_column='size_left_LR', blank=True, null=True)  # Field name made lowercase.
-    size_left_fb = models.FloatField(db_column='size_left_FB', blank=True, null=True)  # Field name made lowercase.
-    size_thickness = models.FloatField(blank=True, null=True)
-    size_normal = models.CharField(max_length=255, blank=True, null=True)
-    envelope = models.CharField(max_length=255, blank=True, null=True)
-    substantial_echo = models.CharField(max_length=255, blank=True, null=True)
-    lump_echo = models.CharField(max_length=255, blank=True, null=True)
-    blood_flow_distribution = models.CharField(max_length=255, blank=True, null=True)
-    blood_flow_spectrum = models.CharField(max_length=255, blank=True, null=True)
-    left_psv = models.FloatField(db_column='left_PSV', blank=True, null=True)  # Field name made lowercase.
-    left_edv = models.FloatField(db_column='left_EDV', blank=True, null=True)  # Field name made lowercase.
-    right_psv = models.FloatField(db_column='right_PSV', blank=True, null=True)  # Field name made lowercase.
-    right_edv = models.FloatField(db_column='right_EDV', blank=True, null=True)  # Field name made lowercase.
+    size_thickness = models.CharField(max_length=255, blank=True, null=True)
     diagnosis = models.CharField(max_length=255, blank=True, null=True)
     review_physician = models.CharField(max_length=255, blank=True, null=True)
     check_date = models.DateField(blank=True, null=True)
+    normal_right = models.ForeignKey(NormalInfo, models.DO_NOTHING, db_column='normal_right', blank=True, null=True, related_name='n_r')
+    normal_left = models.ForeignKey(NormalInfo, models.DO_NOTHING, db_column='normal_left', blank=True, null=True, related_name='n_l')
+    change_right = models.ForeignKey(ChangeInfo, models.DO_NOTHING, db_column='change_right', blank=True, null=True, related_name='c_r')
+    change_left = models.ForeignKey(ChangeInfo, models.DO_NOTHING, db_column='change_left', blank=True, null=True, related_name='c_l')
+    change_thickness = models.ForeignKey(ChangeInfo, models.DO_NOTHING, db_column='change_thickness', blank=True, null=True, related_name='c_t')
 
     class Meta:
         managed = False

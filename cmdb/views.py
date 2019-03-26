@@ -11,8 +11,9 @@ from django.template.loader import get_template
 from django.template import Context
 from django.forms import fields
 from django import forms
-from cmdb.models import ReportDetail
+from cmdb.models import ReportDetail, NormalInfo, ChangeInfo
 import json
+import pymysql
 from aip import AipSpeech
 import codecs
 import hashlib
@@ -24,6 +25,8 @@ import urllib.request
 import requests
 import pdfkit
 from wkhtmltopdf.views import PDFTemplateView
+from core import MainFunction
+from core import insert_sql
 
 
 from aip import AipSpeech
@@ -35,7 +38,13 @@ from pyaudio import PyAudio, paInt16
 import numpy as np
 from datetime import datetime
 import time
+
 # Create your views here.
+
+inputReportList = [
+{'id': '1111111', 'name': '王五', 'check': '甲状腺', 'date': '2019-03-25', 'report': '/static/pdf/王五_1111111_2019-03-25.pdf'},
+{'id': '1111111', 'name': '李四', 'check': '甲状腺', 'date': '2019-03-25', 'report': '/static/pdf/王五_1111111_2019-03-25.pdf'}
+]
 
 
 
@@ -59,7 +68,7 @@ def index(request):
 
 
 def test(request):
-    return render(request, "test.html",)
+    return render(request, "test.html", {'lst': inputReportList})
 
 
 def pdf(request):
@@ -72,11 +81,15 @@ def pdf(request):
     p_age = '30'
     p_id = '1'
     tempDic = {'p_name': p_name, 'p_sex': p_sex, 'p_age': p_age, 'p_id': p_id}
-    return render(request, "pdf.html",tempDic)
+    return render(request, )
 
 
 def forms(request):
     return render(request, "forms.html",)
+
+
+def check_report(request):
+    return render(request, "check_report.html", {'lst': inputReportList},)
 
 
 def a_report_input(request):
@@ -226,10 +239,154 @@ def ajax_patient_info(request):
 
 
 def ajax_report_detail(request):
+    model1 = {"左叶":
+                  {"大小":
+                       {"前后径": "", "左右径": ""},
+                   "形态": "",
+                   "回声": "",
+                   "回声分布": "",
+                   "边界": "",
+                   "表面": "",
+                   "包膜": "",
+                   "CDFI": ""
+                   },
+              "右叶":
+                  {"大小": {"前后径": "", "左右径": ""},
+                   "形态": "",
+                   "回声": "",
+                   "回声分布": "",
+                   "边界": "",
+                   "表面": "",
+                   "包膜": "",
+                   "CDFI": ""
+                   },
+              "峡部": ""
+              }
+    parameter1 = {"形态": r"形态(.+)", "前后径": r"前后径(.+)", "左右径": r"左右径(.+)", "回声分布": r"回声分布(.+)"
+        , "回声": r"内部(.+)回声", "峡部": r"峡部(.+)", "表面": r"表面(.+)、",
+                  "包膜": r"包膜(.+)", "边界": r"边界(.+)", "CDFI": r"CDFI(.+)"}
+    model2 = model = {"左侧":
+        {
+            "位置补充": "",
+            "甲状腺": "",
+            "可见": "",
+            "大小": "",
+            "生长": "",
+            "形状": "",
+            "边缘": "",
+            "边界": "",
+            "内部回声": "",
+            "内部结构": "",
+            "后方回声": "",
+            "FI": "",
+            "钙化": "",
+            "补充": "",
+            "强回声": "",
+            "声影": "",
+            "声晕": ""
+        },
+        "右侧":
+            {
+                "位置补充": "",
+                "甲状腺": "",
+                "可见": "",
+                "大小": "",
+                "生长": "",
+                "形状": "",
+                "边缘": "",
+                "边界": "",
+                "内部回声": "",
+                "内部结构": "",
+                "后方回声": "",
+                "FI": "",
+                "钙化": "",
+                "补充": "",
+                "强回声": "",
+                "声影": "",
+                "声晕": ""
+            },
+        "双侧":
+            {
+                "左侧": {
+                    "大小": "",
+                    "位置补充": ""
+                },
+                "右侧": {
+                    "大小": "",
+                    "位置补充": ""
+                },
+                "甲状腺": "",
+                "可见": "",
+                "生长": "",
+                "形状": "",
+                "边缘": "",
+                "边界": "",
+                "内部回声": "",
+                "内部结构": "",
+                "后方回声": "",
+                "FI": "",
+                "钙化": "",
+                "补充": "",
+                "强回声": "",
+                "声影": "",
+                "声晕": ""
+            },
+        "峡部":
+            {
+                "位置补充": "",
+                "甲状腺": "",
+                "可见": "",
+                "大小": "",
+                "生长": "",
+                "形状": "",
+                "边缘": "",
+                "边界": "",
+                "内部回声": "",
+                "内部结构": "",
+                "后方回声": "",
+                "FI": "",
+                "钙化": "",
+                "补充": "",
+                "强回声": "",
+                "声影": "",
+                "声晕": ""
+            },
+    }
+    parameter2 = {"甲状腺": r".+甲状腺.+?可见.+?个(.+)", "可见": r"可见(.+)个", "大小": r"大小(.+)", "生长": r"(.+)生长", "形状": r"形状(.+)"
+        , "边缘": r"边缘(.+)", "边界": r"边界(.+)", "内部回声": r"内部回声(.+)", "内部结构": r"内部结构(.+)",
+                  "后方回声": r"后方回声(.+)", "FI": r"FI(.+)", "钙化": r"(.+)钙化", "强回声": r"(.+)强回声", "声晕": r"(.+)声晕",
+                  "声影": r"(.+)声影"}
+    reportlist = ""
+    MainFunction.splitTable()
+    part1Res =MainFunction.part1Construct(model1, parameter1)
+    part2Res =MainFunction.part2Construct(model2, parameter2)
+    print(json.dumps(part1Res, ensure_ascii=False))
+    print(json.dumps(part2Res, ensure_ascii=False))
+
+    # insert_sql.insert(part1Res, part2Res)
+
     with connection.cursor() as c:
         c.execute("select * from report_detail where report_id = '1'")
-        report_detail = c.fetchall()
+        temp = c.fetchall()
+        report_detail = list(temp)
+        c.execute("select * from normal_info where normal_id = '%s'" % (report_detail[0][11])) #右侧基本
+        temp = c.fetchall()
+        report_detail.append(list(temp)[0])
+        c.execute("select * from normal_info where normal_id = '%s'" % (report_detail[0][12])) #左侧基本
+        temp = c.fetchall()
+        report_detail.append(list(temp)[0])
+        c.execute("select * from change_info where change_id = '%s'" % (report_detail[0][13])) #右侧局灶
+        temp = c.fetchall()
+        report_detail.append(list(temp)[0])
+        c.execute("select * from change_info where change_id = '%s'" % (report_detail[0][14]))  # 左侧局灶
+        temp = c.fetchall()
+        report_detail.append(list(temp)[0])
+        c.execute("select * from change_info where change_id = '%s'" % (report_detail[0][15]))  # 峡部局灶
+        temp = c.fetchall()
+        report_detail.append(list(temp)[0])
+        # print(report_detail[0][11])
         print(report_detail)
+        print(type(report_detail))
     return JsonResponse(report_detail, safe=False)
 
 
@@ -347,38 +504,28 @@ def insert_into_mysql(request):
         check_number = temp_json['check_number']
         check_item = temp_json['check_item']
         machine_number = temp_json['machine_number']
-        size_right_UL =temp_json['size_right_UL']
-        size_right_LR = temp_json['size_right_LR']
-        size_right_FB =temp_json['size_right_FB']
-        size_left_UL = temp_json['size_left_UL']
-        size_left_LR = temp_json['size_left_LR']
-        size_left_FB = temp_json['size_left_FB']
         size_thickness = temp_json['size_thickness']
-        size_normal = temp_json['size_normal']
-        substantial_echo =temp_json['substantial_echo']
-        lump_echo = temp_json['lump_echo']
-        blood_flow_distribution = temp_json['blood_flow_distribution']
-        blood_flow_spectrum = temp_json['blood_flow_spectrum']
-        left_PSV = temp_json['left_PSV']
-        left_EDV = temp_json['left_EDV']
-        right_PSV = temp_json['right_PSV']
-        right_EDV =temp_json['right_EDV']
         diagnosis = temp_json['diagnosis']
         review_physician = temp_json['review_physician']
         check_date = temp_json['check_date']
-        print(patient_id, department_name, check_item, machine_number, size_left_FB, size_thickness, left_EDV)
+        nr_id = temp_json['nr_id']
+        nr_id = NormalInfo.objects.get(normal_id=int(nr_id))
+        nl_id = temp_json['nl_id']
+        nl_id = NormalInfo.objects.get(normal_id=int(nl_id))
+        cr_id = temp_json['cr_id']
+        cr_id = ChangeInfo.objects.get(change_id=int(cr_id))
+        cl_id = temp_json['cl_id']
+        cl_id = ChangeInfo.objects.get(change_id=int(cl_id))
+        ct_id = temp_json['ct_id']
+        ct_id = ChangeInfo.objects.get(change_id=int(ct_id))
+        # print(nr_id,nl_id,cr_id)
         create = ReportDetail.objects.create(patient_id=patient_id, department_name=department_name,
+                                             check_number=check_number, clinic_number=door_number,
                                              check_item=check_item, machine_number=machine_number,
-                                             size_right_ul=size_right_UL, size_right_lr=size_right_LR,
-                                             size_right_fb=size_right_FB, size_left_ul=size_left_UL,
-                                             size_left_lr=size_left_LR, size_left_fb=size_left_FB,
-                                             size_thickness=size_thickness, size_normal=size_normal,
-                                             substantial_echo=substantial_echo, lump_echo=lump_echo,
-                                             blood_flow_distribution=blood_flow_distribution,
-                                             blood_flow_spectrum=blood_flow_spectrum, left_psv=left_PSV,
-                                             left_edv=left_EDV, right_psv=right_PSV, right_edv=right_EDV,
-                                             diagnosis=diagnosis, review_physician=review_physician,
-                                             check_date=check_date)
+                                             size_thickness=size_thickness, diagnosis=diagnosis,
+                                             review_physician=review_physician, check_date=check_date,
+                                             normal_right=nr_id, normal_left=nl_id, change_thickness=ct_id,
+                                             change_right=cr_id, change_left=cl_id)
         print(type(create), create)
         return JsonResponse(temp_json, safe=False)
 
@@ -392,15 +539,142 @@ def save_pdf(request):
         p_sex = temp_json['table_patient_sex']
         p_age = temp_json['table_patient_age']
         p_id = temp_json['table_patient_id']
+        p_department = temp_json['department_name']
+        p_clinic = temp_json['door_number']
+        p_check_num = temp_json['check_number']
+        p_check_item = temp_json['check_item']
+        p_machine = temp_json['machine_number']
+        p_thickness_size = temp_json['size_thickness']
+        p_diagnosis = temp_json['diagnosis']
+        review_physician = temp_json['review_physician']
+        check_date = temp_json['check_date']
         print(p_name, p_sex, p_age, p_id)
-        tempDic = {'p_name': p_name, 'p_sex': p_sex, 'p_age': p_age, 'p_id': p_id}
+
+        with connection.cursor() as c:
+            c.execute("select * from report_detail where report_id = '1'")
+            temp = c.fetchall()
+            report_detail = list(temp)
+            c.execute("select * from normal_info where normal_id = '%s'" % (report_detail[0][11]))  # 右侧基本
+            temp = c.fetchall()
+            report_detail.append(list(temp)[0])
+            c.execute("select * from normal_info where normal_id = '%s'" % (report_detail[0][12]))  # 左侧基本
+            temp = c.fetchall()
+            report_detail.append(list(temp)[0])
+            c.execute("select * from change_info where change_id = '%s'" % (report_detail[0][13]))  # 右侧局灶
+            temp = c.fetchall()
+            report_detail.append(list(temp)[0])
+            c.execute("select * from change_info where change_id = '%s'" % (report_detail[0][14]))  # 左侧局灶
+            temp = c.fetchall()
+            report_detail.append(list(temp)[0])
+            c.execute("select * from change_info where change_id = '%s'" % (report_detail[0][15]))  # 峡部局灶
+            temp = c.fetchall()
+            report_detail.append(list(temp)[0])
+
+        p_r_fb = report_detail[1][1]
+        p_r_lr = report_detail[1][2]
+        p_r_shape = report_detail[1][3]
+        p_r_echo = report_detail[1][4]
+        p_r_echo_d = report_detail[1][5]
+        p_r_edge = report_detail[1][6]
+        p_r_surface = report_detail[1][7]
+        p_r_envelope = report_detail[1][8]
+        p_r_cdfi = report_detail[1][9]
+        p_l_fb = report_detail[2][1]
+        p_l_lr = report_detail[2][2]
+        p_l_shape = report_detail[2][3]
+        p_l_echo = report_detail[2][4]
+        p_l_echo_d = report_detail[2][5]
+        p_l_edge = report_detail[2][6]
+        p_l_surface = report_detail[2][7]
+        p_l_envelope = report_detail[2][8]
+        p_l_cdfi = report_detail[2][9]
+        p_cr_position = report_detail[3][1]
+        p_cr_type = report_detail[3][2]
+        p_cr_num = report_detail[3][3]
+        p_cr_size = report_detail[3][4]
+        p_cr_grow = report_detail[3][5]
+        p_cr_shape = report_detail[3][6]
+        p_cr_edge = report_detail[3][7]
+        p_cr_boundary = report_detail[3][8]
+        p_cr_echo_inside = report_detail[3][9]
+        p_cr_structure = report_detail[3][10]
+        p_cr_echo_back = report_detail[3][11]
+        p_cr_cdfi = report_detail[3][12]
+        p_cr_cal = report_detail[3][13]
+        p_cr_echo_strong = report_detail[3][14]
+        p_cr_sound = report_detail[3][15]
+        p_cr_halo = report_detail[3][16]
+        p_cr_supplement = report_detail[3][17]
+        p_cl_position = report_detail[4][1]
+        p_cl_type = report_detail[4][2]
+        p_cl_num = report_detail[4][3]
+        p_cl_size = report_detail[4][4]
+        p_cl_grow = report_detail[4][5]
+        p_cl_shape = report_detail[4][6]
+        p_cl_edge = report_detail[4][7]
+        p_cl_boundary = report_detail[4][8]
+        p_cl_echo_inside = report_detail[4][9]
+        p_cl_structure = report_detail[4][10]
+        p_cl_echo_back = report_detail[4][11]
+        p_cl_cdfi = report_detail[4][12]
+        p_cl_cal = report_detail[4][13]
+        p_cl_echo_strong = report_detail[4][14]
+        p_cl_sound = report_detail[4][15]
+        p_cl_halo = report_detail[4][16]
+        p_cl_supplement = report_detail[4][17]
+        p_ct_position = report_detail[5][1]
+        p_ct_type = report_detail[5][2]
+        p_ct_num = report_detail[5][3]
+        p_ct_size = report_detail[5][4]
+        p_ct_grow = report_detail[5][5]
+        p_ct_shape = report_detail[5][6]
+        p_ct_edge = report_detail[5][7]
+        p_ct_boundary = report_detail[5][8]
+        p_ct_echo_inside = report_detail[5][9]
+        p_ct_structure = report_detail[5][10]
+        p_ct_echo_back = report_detail[5][11]
+        p_ct_cdfi = report_detail[5][12]
+        p_ct_cal = report_detail[5][13]
+        p_ct_echo_strong = report_detail[5][14]
+        p_ct_sound = report_detail[5][15]
+        p_ct_halo = report_detail[5][16]
+        p_ct_supplement = report_detail[5][17]
+
+        tempDic = {'p_name': p_name, 'p_sex': p_sex, 'p_age': p_age, 'p_id': p_id, 'p_department': p_department,
+                   'p_clinic': p_clinic, 'p_check_num': p_check_num, 'p_check_item': p_check_item,
+                   'p_machine': p_machine, 'p_thickness_size': p_thickness_size, 'review_physician': review_physician,
+                   'check_date': check_date, 'p_r_fb': p_r_fb, 'p_r_lr': p_r_lr, 'p_r_shape': p_r_shape,
+                   'p_r_echo': p_r_echo, 'p_r_echo_d': p_r_echo_d, 'p_r_edge': p_r_edge, 'p_r_surface': p_r_surface,
+                   'p_r_envelope': p_r_envelope, 'p_r_cdfi': p_r_cdfi, 'p_l_fb': p_l_fb, 'p_l_lr': p_l_lr, 'p_l_shape': p_l_shape,
+                   'p_l_echo': p_l_echo, 'p_l_echo_d': p_l_echo_d, 'p_l_edge': p_l_edge, 'p_l_surface': p_l_surface,
+                   'p_l_envelope': p_l_envelope, 'p_l_cdfi': p_l_cdfi, 'p_cr_position': p_cr_position,
+                   'p_cr_type': p_cr_type, 'p_cr_num': p_cr_num, 'p_cr_size': p_cr_size, 'p_cr_grow': p_cr_grow,
+                   'p_cr_shape': p_cr_shape, 'p_cr_edge': p_cr_edge, 'p_cr_boundary': p_cr_boundary,
+                   'p_cr_echo_inside': p_cr_echo_inside, 'p_cr_structure': p_cr_structure, 'p_cr_echo_back':p_cr_echo_back,
+                   'p_cr_cdfi': p_cr_cdfi, 'p_cr_cal': p_cr_cal, 'p_cr_echo_strong': p_cr_echo_strong,
+                   'p_cr_sound': p_cr_sound, 'p_cr_halo': p_cr_halo, 'p_cr_supplement': p_cr_supplement, 'p_cl_position': p_cl_position,
+                   'p_cl_type': p_cl_type, 'p_cl_num': p_cl_num, 'p_cl_size': p_cl_size, 'p_cl_grow': p_cl_grow,
+                   'p_cl_shape': p_cl_shape, 'p_cl_edge': p_cl_edge, 'p_cl_boundary': p_cl_boundary,
+                   'p_cl_echo_inside': p_cl_echo_inside, 'p_cl_structure': p_cl_structure, 'p_cl_echo_back':p_cl_echo_back,
+                   'p_cl_cdfi': p_cl_cdfi, 'p_cl_cal': p_cl_cal, 'p_cl_echo_strong': p_cl_echo_strong,
+                   'p_cl_sound': p_cl_sound, 'p_cl_halo': p_cl_halo, 'p_cl_supplement': p_cl_supplement, 'p_ct_position': p_ct_position,
+                   'p_ct_type': p_ct_type, 'p_ct_num': p_ct_num, 'p_ct_size': p_ct_size, 'p_ct_grow': p_ct_grow,
+                   'p_ct_shape': p_ct_shape, 'p_ct_edge': p_ct_edge, 'p_ct_boundary': p_ct_boundary,
+                   'p_ct_echo_inside': p_ct_echo_inside, 'p_ct_structure': p_ct_structure, 'p_ct_echo_back':p_ct_echo_back,
+                   'p_ct_cdfi': p_ct_cdfi, 'p_ct_cal': p_ct_cal, 'p_ct_echo_strong': p_ct_echo_strong,
+                   'p_ct_sound': p_ct_sound, 'p_ct_halo': p_ct_halo, 'p_ct_supplement': p_ct_supplement}
+        p_report_name = p_name + '_' + p_check_num + '_' + check_date
+        report_ass = '/static/pdf/'+p_report_name+'.pdf'
+        tempReportInfo = {'id': p_id, 'name': p_name, 'check': p_check_item, 'date': check_date, 'report': report_ass}
+        inputReportList.append(tempReportInfo)
         data = dict()
         print('1')
         template = get_template('pdf.html')
         html = template.render(tempDic)
         # html = template.render(data)
         url = 'http://localhost:6000/pdf/'
-        filename = "sample_pdf.pdf"
+        str_file_name = p_name+"_"+p_check_num+"_"+check_date
+        filename = "static\\pdf\\" + str_file_name + ".pdf"
         confg = pdfkit.configuration(wkhtmltopdf=r'D:\wkhtmltopdf\bin\wkhtmltopdf.exe')
         css = [r"E:\workspace_django\mysite\static\css\test.css", r"E:\workspace_django\mysite\static\css\styles.css"]
         pdf = pdfkit.from_string(html, filename, css=css, configuration=confg)

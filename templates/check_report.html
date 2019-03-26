@@ -9,6 +9,7 @@
     <link rel="stylesheet" href="{% static "./vendor/simple-line-icons/css/simple-line-icons.css" %}">
     <link rel="stylesheet" href="{% static "./vendor/font-awesome/css/fontawesome-all.min.css" %}">
     <link rel="stylesheet" href="{% static "./css/styles.css" %}">
+    <link rel="stylesheet" href="{% static "./css/test.css" %}">
 
 
 
@@ -22,19 +23,18 @@
 <script src="{% static "./js/mp3.js" %}"></script>
 <script src="{% static "./js/mp3-engine.js" %}"></script>
 <script src="{% static "./js/wav.js" %}"></script>
+<script src="{% static "./js/submit_post.js" %}"></script>
 <script>
     function RandomKey(){
 	return "randomkey"+(RandomKey.idx++);
     };
 RandomKey.idx=0;
 </script>
-
 <style type="text/css">
     span{
         color:mediumvioletred;
     }
 </style>
-
 <div class="page-wrapper">
     <nav class="navbar page-header">
         <a href="#" class="btn btn-link sidebar-mobile-toggle d-md-none mr-auto">
@@ -133,10 +133,12 @@ RandomKey.idx=0;
                     <li class="nav-title">Navigation</li>
 
                     <li class="nav-item">
-                        <a href="/index/" class="nav-link  active">
+                        <a href="/index/" class="nav-link">
                             <i class="icon icon-speedometer"></i> 主页
                         </a>
                     </li>
+
+
 
                     <li class="nav-item nav-dropdown">
                         <a href="#" class="nav-link nav-dropdown-toggle">
@@ -151,7 +153,7 @@ RandomKey.idx=0;
                             </li>
 
                             <li class="nav-item">
-                                <a href="/a_extraction/" class="nav-link">
+                                <a href="/a_extraction/" class="nav-link ">
                                     <i class="icon icon-target"></i> 关系抽取
                                 </a>
                             </li>
@@ -163,8 +165,6 @@ RandomKey.idx=0;
                             </li>
                         </ul>
                     </li>
-
-
                     <li class="nav-item">
                         <a href="{% url 'a_report_input' %}" class="nav-link">
                             <i class="icon icon-grid"></i> 病历录入
@@ -172,10 +172,12 @@ RandomKey.idx=0;
                     </li>
 
                     <li class="nav-item">
-                        <a href="{% url 'check_report' %}" class="nav-link">
+                        <a href="{% url 'check_report' %}" class="nav-link active">
                             <i class="icon icon-grid"></i> 查看病历
                         </a>
                     </li>
+
+
 
 
 
@@ -184,24 +186,62 @@ RandomKey.idx=0;
         </div>
 
         <div class="content">
+            <div class="font-size-20">电子病历辅助诊断系统</div>
             <div class="container-fluid">
-
-
-                <div class="row ">
+                <div class="row mt-4">
                     <div class="col-md-12">
                         <div class="card">
-                            <div class="card-header">
-                                This is main page
+                            <div class="card-header bg-light font-label">
+                                病历查看
                             </div>
 
-                            <div class="card-body p-0">
-                                <p>some table or chart</p>
+                            <div class="card-body">
+                            <div class="table-responsive">
+                                <table class="table">
+                                    <thead>
+                                    <tr>
+                                        <th>病历编号</th>
+                                        <th>患者姓名</th>
+                                        <th>检查项目</th>
+                                        <th>检查日期</th>
+                                        <th>查看报告</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    {% for line in lst %}
+                                        <tr>
+                                            <td>{{ line.id }}</td>
+                                            <td>{{ line.name }}</td>
+                                            <td>{{ line.check }}</td>
+                                            <td>{{ line.date }}</td>
+                                            <td><a href="{{ line.report }}" target="_blank">查看报告</a></td>
+                                        </tr>
+
+                                    {% endfor %}
+{#                                    <tr>#}
+{#                                        <td>1</td>#}
+{#                                        <td class="text-nowrap">Samsung Galaxy S8</td>#}
+{#                                        <td>31,589</td>#}
+{#                                        <td>$800</td>#}
+{#                                        <td>5%</td>#}
+{#                                    </tr>#}
+
+
+
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+
+
+
+
+
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
     </div>
 </div>
 <script src="{% static "./vendor/jquery/jquery.min.js" %}"></script>

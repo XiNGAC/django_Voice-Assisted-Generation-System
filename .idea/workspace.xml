@@ -2,12 +2,17 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="ea24e592-6d03-40a4-b296-8daf6106768e" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/core/insert_sql.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/core/test.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/check_report.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/85ccb21c-b94f-49b1-aabe-776c4c0e4046.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/85ccb21c-b94f-49b1-aabe-776c4c0e4046.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmdb/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/cmdb/models.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmdb/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/cmdb/views.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mysite/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/mysite/settings.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/mysite/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/mysite/urls.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/js/submit_post.js" beforeDir="false" afterPath="$PROJECT_DIR$/static/js/submit_post.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/index.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/pdf.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/pdf.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/test.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/test.html" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -16,7 +21,10 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="CoverageDataManager">
+    <SUITE FILE_PATH="coverage/mysite$test.coverage" NAME="test Coverage Results" MODIFIED="1553061622331" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/core" />
     <SUITE FILE_PATH="coverage/mysite$audio_transfer.coverage" NAME="audio_transfer Coverage Results" MODIFIED="1551716177329" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/static/py" />
+    <SUITE FILE_PATH="coverage/mysite$MainFunction.coverage" NAME="MainFunction Coverage Results" MODIFIED="1553152682687" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/core" />
+    <SUITE FILE_PATH="coverage/mysite$yinshua.coverage" NAME="yinshua Coverage Results" MODIFIED="1553603266576" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$USER_HOME$/Desktop" />
     <SUITE FILE_PATH="coverage/mysite$hello_world.coverage" NAME="hello_world Coverage Results" MODIFIED="1548903809846" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/static/py" />
     <SUITE FILE_PATH="coverage/mysite$word_cut_test.coverage" NAME="word_cut_test Coverage Results" MODIFIED="1551675924066" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/static/py" />
   </component>
@@ -60,46 +68,68 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/cmdb/views.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="299">
-              <caret line="98" selection-start-line="98" selection-end-line="98" />
+            <state relative-caret-position="199">
+              <caret line="462" column="52" lean-forward="true" selection-start-line="462" selection-start-column="52" selection-end-line="462" selection-end-column="52" />
               <folding>
                 <element signature="e#0#45#0" expanded="true" />
+                <element signature="e#1727#2106#0" />
+                <element signature="e#2339#2599#0" />
+                <element signature="e#2648#2908#0" />
+                <element signature="e#3027#3277#0" />
+                <element signature="e#3393#3643#0" />
+                <element signature="e#3746#5118#0" />
+                <element signature="e#5145#5652#0" />
+                <element signature="e#5912#5954#0" />
+                <element signature="e#6001#6223#0" />
+                <element signature="e#6262#6498#0" />
+                <element signature="e#6547#7189#0" />
+                <element signature="e#7207#7419#0" />
+                <element signature="e#7441#9493#0" />
+                <element signature="e#9511#9839#0" />
+                <element signature="e#11387#12102#0" />
+                <element signature="e#12167#14057#0" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/templates/pdf.html">
+        <entry file="file://$PROJECT_DIR$/templates/check_report.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="412">
+              <caret line="171" column="25" selection-start-line="171" selection-start-column="25" selection-end-line="171" selection-end-column="25" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/templates/index.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="236">
+              <caret line="174" column="76" selection-start-line="174" selection-start-column="76" selection-end-line="174" selection-end-column="76" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/templates/test.html">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="260">
-              <caret line="13" column="44" lean-forward="true" selection-start-line="13" selection-start-column="44" selection-end-line="13" selection-end-column="44" />
+              <caret line="171" selection-end-line="253" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/mysite/urls.py">
+        <entry file="file://$PROJECT_DIR$/templates/tables.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="180">
-              <caret line="33" column="110" selection-start-line="33" selection-start-column="110" selection-end-line="33" selection-end-column="110" />
+            <state relative-caret-position="182">
+              <caret line="312" column="30" selection-start-line="261" selection-start-column="24" selection-end-line="312" selection-end-column="30" />
               <folding>
-                <element signature="e#630#662#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/static/py/word_cut_test.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="559">
-              <caret line="138" column="10" selection-start-line="138" selection-start-column="10" selection-end-line="138" selection-end-column="10" />
-              <folding>
-                <element signature="e#0#12#0" expanded="true" />
+                <element signature="n#div#1;n#div#0;n#div#0;n#div#0;n#div#1;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" />
               </folding>
             </state>
           </provider>
@@ -108,46 +138,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/templates/a_report_input.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="348">
-              <caret line="365" column="65" lean-forward="true" selection-start-line="365" selection-start-column="40" selection-end-line="365" selection-end-column="65" />
-              <folding>
-                <element signature="n#div#0;n#div#0;n#div#0;n#div#0;n#div#1;n#div#0;n#div#0;n#div#3;n#div#0;n#div#1;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" />
-                <element signature="n#style#0;n#hr#0;n#div#0;n#div#0;n#div#0;n#div#0;n#div#1;n#div#0;n#div#0;n#div#3;n#div#0;n#div#1;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#input#0;n#div#0;n#div#0;n#div#1;n#div#0;n#div#0;n#div#0;n#div#0;n#div#1;n#div#0;n#div#0;n#div#3;n#div#0;n#div#1;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-                <element signature="n#div#3;n#div#0;n#div#0;n#div#0;n#div#0;n#div#1;n#div#0;n#div#0;n#div#3;n#div#0;n#div#1;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" />
-                <element signature="n#div#4;n#div#0;n#div#0;n#div#0;n#div#0;n#div#1;n#div#0;n#div#0;n#div#3;n#div#0;n#div#1;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" />
-                <element signature="n#div#5;n#div#0;n#div#0;n#div#0;n#div#0;n#div#1;n#div#0;n#div#0;n#div#3;n#div#0;n#div#1;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" />
-                <element signature="n#div#7;n#div#0;n#div#0;n#div#0;n#div#0;n#div#1;n#div#0;n#div#0;n#div#3;n#div#0;n#div#1;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" />
-                <element signature="n#div#8;n#div#0;n#div#0;n#div#0;n#div#0;n#div#1;n#div#0;n#div#0;n#div#3;n#div#0;n#div#1;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" />
-                <element signature="n#div#9;n#div#0;n#div#0;n#div#0;n#div#0;n#div#1;n#div#0;n#div#0;n#div#3;n#div#0;n#div#1;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/static/js/submit_post.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="199">
-              <caret line="91" column="34" lean-forward="true" selection-start-line="91" selection-start-column="34" selection-end-line="91" selection-end-column="34" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/templates/a_recognition.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="899">
-              <caret line="249" lean-forward="true" selection-start-line="249" selection-end-line="249" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/templates/a_extraction.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-1195">
-              <caret line="136" column="65" lean-forward="true" selection-start-line="136" selection-start-column="65" selection-end-line="136" selection-end-column="65" />
+            <state relative-caret-position="600">
+              <caret line="168" column="25" selection-start-line="168" selection-start-column="25" selection-end-line="168" selection-end-column="25" />
             </state>
           </provider>
         </entry>
@@ -155,8 +147,26 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/templates/a_diagnosis.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="419">
-              <caret line="144" column="25" selection-start-line="144" selection-start-column="25" selection-end-line="144" selection-end-column="25" />
+            <state relative-caret-position="400">
+              <caret line="171" column="25" selection-start-line="171" selection-start-column="25" selection-end-line="171" selection-end-column="25" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/templates/a_recognition.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="332">
+              <caret line="171" column="25" selection-start-line="171" selection-start-column="25" selection-end-line="171" selection-end-column="25" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/templates/a_extraction.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="300">
+              <caret line="153" selection-start-line="153" selection-end-line="153" />
             </state>
           </provider>
         </entry>
@@ -166,35 +176,15 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="Python Script" />
         <option value="JavaScript File" />
         <option value="CSS File" />
+        <option value="Python Script" />
         <option value="HTML File" />
       </list>
     </option>
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>normal inp</find>
-      <find>Example select</find>
-      <find>wav</find>
-      <find>mp3</find>
-      <find>dash</find>
-      <find>href</find>
-      <find>bootstrap</find>
-      <find>show</find>
-      <find>translate_to_word</find>
-      <find>name</find>
-      <find>action</find>
-      <find>&lt;form</find>
-      <find>/insert_into_mysql</find>
-      <find>post</find>
-      <find>button</find>
-      <find>temp</find>
-      <find>welcome</find>
-      <find>保存报告</find>
-      <find>form</find>
-      <find>form-control</find>
       <find>onclick</find>
       <find>basic f</find>
       <find>font</find>
@@ -205,6 +195,26 @@
       <find>substantial_echo</find>
       <find>x3</find>
       <find>CsrfViewMiddleware</find>
+      <find>fileroad</find>
+      <find>splittable</find>
+      <find>print</find>
+      <find>connection</find>
+      <find>normal_le</find>
+      <find>左侧</find>
+      <find>sql_insert_report</find>
+      <find>前后</find>
+      <find>x2</find>
+      <find>data[3]</find>
+      <find>#x3</find>
+      <find>data[4]</find>
+      <find>x4</find>
+      <find>table_patient_id</find>
+      <find>to_report</find>
+      <find>p_nr</find>
+      <find>ReportDetail</find>
+      <find>p_cl</find>
+      <find>p_cr</find>
+      <find>table_patient_name</find>
     </findStrings>
     <replaceStrings>
       <replace>.jpg&quot; %}</replace>
@@ -212,6 +222,24 @@
       <replace>x21</replace>
       <replace>x31</replace>
       <replace>x4</replace>
+      <replace>r_c</replace>
+      <replace>右侧</replace>
+      <replace>峡部</replace>
+      <replace>t_</replace>
+      <replace>x3</replace>
+      <replace>data[4]</replace>
+      <replace>#x4</replace>
+      <replace>data[5]</replace>
+      <replace>p_nr</replace>
+      <replace />
+      <replace>p_l</replace>
+      <replace>report_detail[2]</replace>
+      <replace>report_detail[4]</replace>
+      <replace>report_detail[5]</replace>
+      <replace>p_cr</replace>
+      <replace>p_l</replace>
+      <replace>p_cl</replace>
+      <replace>p_ct</replace>
     </replaceStrings>
   </component>
   <component name="Git.Settings">
@@ -239,32 +267,37 @@
         <option value="$PROJECT_DIR$/templates/login.html" />
         <option value="$PROJECT_DIR$/templates/regist.html" />
         <option value="$PROJECT_DIR$/templates/register.html" />
-        <option value="$PROJECT_DIR$/cmdb/models.py" />
         <option value="$PROJECT_DIR$/static/test.txt" />
         <option value="$PROJECT_DIR$/static/py/audio_transfer.py" />
-        <option value="$PROJECT_DIR$/static/py/word_cut_test.py" />
         <option value="$PROJECT_DIR$/templates/to_use_py_test.html" />
         <option value="$PROJECT_DIR$/templates/temp.html" />
-        <option value="$PROJECT_DIR$/templates/index.html" />
         <option value="$PROJECT_DIR$/static/css/styles.css" />
         <option value="$PROJECT_DIR$/static/css/font-style.css" />
         <option value="$PROJECT_DIR$/static/css/test.css" />
-        <option value="$PROJECT_DIR$/templates/test.html" />
-        <option value="$PROJECT_DIR$/templates/a_extraction.html" />
-        <option value="$PROJECT_DIR$/templates/a_diagnosis.html" />
-        <option value="$PROJECT_DIR$/templates/pdf.html" />
         <option value="$PROJECT_DIR$/mysite/settings.py" />
-        <option value="$PROJECT_DIR$/templates/a_report_input.html" />
-        <option value="$PROJECT_DIR$/cmdb/views.py" />
-        <option value="$PROJECT_DIR$/mysite/urls.py" />
-        <option value="$PROJECT_DIR$/templates/a_recognition.html" />
         <option value="$PROJECT_DIR$/static/js/submit_post.js" />
+        <option value="$PROJECT_DIR$/core/test.py" />
+        <option value="$PROJECT_DIR$/static/py/word_cut_test.py" />
+        <option value="$PROJECT_DIR$/core/MainFunction.py" />
+        <option value="$PROJECT_DIR$/cmdb/models.py" />
+        <option value="$PROJECT_DIR$/core/insert_sql.py" />
+        <option value="$PROJECT_DIR$/templates/pdf.html" />
+        <option value="$PROJECT_DIR$/mysite/urls.py" />
+        <option value="$PROJECT_DIR$/templates/test.html" />
+        <option value="$PROJECT_DIR$/templates/index.html" />
+        <option value="$PROJECT_DIR$/templates/a_report_input.html" />
+        <option value="$PROJECT_DIR$/templates/a_diagnosis.html" />
+        <option value="$PROJECT_DIR$/templates/a_recognition.html" />
+        <option value="$PROJECT_DIR$/templates/a_extraction.html" />
+        <option value="$PROJECT_DIR$/cmdb/views.py" />
+        <option value="$PROJECT_DIR$/templates/check_report.html" />
+        <option value="$USER_HOME$/Desktop/yinshua.py" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="350" />
-    <option name="y" value="-22" />
+    <option name="x" value="-12" />
+    <option name="y" value="-12" />
     <option name="width" value="966" />
     <option name="height" value="524" />
   </component>
@@ -273,7 +306,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -284,24 +316,12 @@
             <path>
               <item name="mysite" type="b2602c69:ProjectViewProjectNode" />
               <item name="mysite" type="462c0819:PsiDirectoryNode" />
-              <item name="mysite" type="462c0819:PsiDirectoryNode" />
+              <item name="cmdb" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="mysite" type="b2602c69:ProjectViewProjectNode" />
               <item name="mysite" type="462c0819:PsiDirectoryNode" />
-              <item name="static" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="mysite" type="b2602c69:ProjectViewProjectNode" />
               <item name="mysite" type="462c0819:PsiDirectoryNode" />
-              <item name="static" type="462c0819:PsiDirectoryNode" />
-              <item name="css" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="mysite" type="b2602c69:ProjectViewProjectNode" />
-              <item name="mysite" type="462c0819:PsiDirectoryNode" />
-              <item name="static" type="462c0819:PsiDirectoryNode" />
-              <item name="js" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="mysite" type="b2602c69:ProjectViewProjectNode" />
@@ -312,6 +332,7 @@
           <select />
         </subPane>
       </pane>
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -319,9 +340,10 @@
     <property name="DefaultHtmlFileTemplate" value="HTML File" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="database.console.LAST_STATE" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/templates/pdf.html" />
     <property name="list.type.of.created.stylesheet" value="CSS" />
     <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
+    <property name="two.files.diff.last.used.file" value="$PROJECT_DIR$/templates/pdf.html" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
@@ -340,7 +362,29 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Django server.mysite">
+  <component name="RunManager" selected="Python.yinshua">
+    <configuration name="MainFunction" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <module name="mysite" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/core" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/core/MainFunction.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
     <configuration name="audio_transfer" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="mysite" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -363,7 +407,7 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
-    <configuration name="hello_world" type="PythonConfigurationType" factoryName="Python" temporary="true">
+    <configuration name="test" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="mysite" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -371,12 +415,12 @@
         <env name="PYTHONUNBUFFERED" value="1" />
       </envs>
       <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/static/py" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/core" />
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/static/py/hello_world.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/core/test.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -399,6 +443,28 @@
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
       <option name="SCRIPT_NAME" value="$PROJECT_DIR$/static/py/word_cut_test.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="yinshua" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <module name="mysite" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$USER_HOME$/Desktop" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$USER_HOME$/Desktop/yinshua.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -458,15 +524,19 @@
     <list>
       <item itemvalue="Django server.migrate" />
       <item itemvalue="Django server.mysite" />
-      <item itemvalue="Python.hello_world" />
       <item itemvalue="Python.audio_transfer" />
       <item itemvalue="Python.word_cut_test" />
+      <item itemvalue="Python.test" />
+      <item itemvalue="Python.MainFunction" />
+      <item itemvalue="Python.yinshua" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="Python.yinshua" />
+        <item itemvalue="Python.MainFunction" />
+        <item itemvalue="Python.test" />
         <item itemvalue="Python.audio_transfer" />
         <item itemvalue="Python.word_cut_test" />
-        <item itemvalue="Python.hello_world" />
       </list>
     </recent_temporary>
   </component>
@@ -508,7 +578,12 @@
       <workItem from="1552662380114" duration="622000" />
       <workItem from="1552702979263" duration="1330000" />
       <workItem from="1552797464213" duration="16481000" />
-      <workItem from="1552917259466" duration="5863000" />
+      <workItem from="1552917259466" duration="5923000" />
+      <workItem from="1552982664056" duration="2907000" />
+      <workItem from="1553060971738" duration="15363000" />
+      <workItem from="1553169419260" duration="1868000" />
+      <workItem from="1553233794485" duration="8984000" />
+      <workItem from="1553492508715" duration="24749000" />
     </task>
     <task id="LOCAL-00001" summary="upload.html test">
       <created>1550811085631</created>
@@ -636,11 +711,18 @@
       <option name="project" value="LOCAL" />
       <updated>1552834053911</updated>
     </task>
-    <option name="localTasksCounter" value="19" />
+    <task id="LOCAL-00019" summary="update">
+      <created>1552923703858</created>
+      <option name="number" value="00019" />
+      <option name="presentableId" value="LOCAL-00019" />
+      <option name="project" value="LOCAL" />
+      <updated>1552923703858</updated>
+    </task>
+    <option name="localTasksCounter" value="20" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="230708000" />
+    <option name="totallyTimeSpent" value="284639000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -655,22 +737,22 @@
     <frame x="-6" y="-6" width="1933" height="1053" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.76541096" visible="true" weight="0.15786667" />
+      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.76541096" visible="true" weight="0.16586667" />
       <window_info id="Structure" order="1" sideWeight="0.5017123" side_tool="true" weight="0.15797317" />
       <window_info id="Favorites" order="2" sideWeight="0.23458904" side_tool="true" weight="0.15797317" />
-      <window_info id="Database" order="3" weight="0.15991238" />
+      <window_info id="Database" order="3" weight="0.15946667" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.329718" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" sideWeight="0.488" visible="true" weight="0.29609543" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" sideWeight="0.8986667" visible="true" weight="0.43383947" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
-      <window_info anchor="bottom" id="TODO" order="6" sideWeight="0.49813333" weight="0.3275488" />
+      <window_info anchor="bottom" id="TODO" order="6" sideWeight="0.496" weight="0.3275488" />
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Version Control" order="8" sideWeight="0.4992" weight="0.329718" />
-      <window_info anchor="bottom" id="Event Log" order="9" sideWeight="0.512" side_tool="true" visible="true" weight="0.29609543" />
-      <window_info anchor="bottom" id="Terminal" order="10" sideWeight="0.49653333" weight="0.52386117" />
-      <window_info anchor="bottom" id="Python Console" order="11" sideWeight="0.49813333" weight="0.3275488" />
+      <window_info anchor="bottom" id="Version Control" order="8" sideWeight="0.49813333" weight="0.329718" />
+      <window_info anchor="bottom" id="Event Log" order="9" sideWeight="0.101333335" side_tool="true" visible="true" weight="0.43383947" />
+      <window_info anchor="bottom" id="Terminal" order="10" sideWeight="0.49013335" weight="0.52386117" />
+      <window_info anchor="bottom" id="Python Console" order="11" sideWeight="0.49493334" weight="0.3275488" />
       <window_info anchor="bottom" id="Database Changes" order="12" sideWeight="0.49973333" weight="0.3286334" />
       <window_info anchor="bottom" id="Database Console" order="13" weight="0.34712642" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
@@ -726,57 +808,6 @@
     <option name="LAST_COMMIT_MESSAGE" value="update" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/templates/tabs.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="119">
-          <caret line="255" column="16" selection-start-line="255" selection-start-column="16" selection-end-line="286" selection-end-column="22" />
-          <folding>
-            <element signature="n#div#0;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/templates/tables.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="8284">
-          <caret line="436" column="30" selection-start-line="385" selection-start-column="24" selection-end-line="436" selection-end-column="30" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/templates/buttons.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="6270">
-          <caret line="330" column="41" selection-start-line="330" selection-start-column="41" selection-end-line="330" selection-end-column="41" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/static/js/lame.min.js" />
-    <entry file="file://$PROJECT_DIR$/static/js/worker.js" />
-    <entry file="file://$PROJECT_DIR$/static/js/main.js" />
-    <entry file="file://$PROJECT_DIR$/static/js/mui.min.js" />
-    <entry file="file://$PROJECT_DIR$/static/py/hello_world.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="57">
-          <caret line="3" column="12" lean-forward="true" selection-start-line="3" selection-start-column="12" selection-end-line="3" selection-end-column="12" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/static/js/recorder-core.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2337">
-          <caret line="123" column="47" selection-start-line="123" selection-start-column="47" selection-end-line="123" selection-end-column="47" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$APPLICATION_CONFIG_DIR$/consoles/db/85ccb21c-b94f-49b1-aabe-776c4c0e4046/console.sql">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="57">
-          <caret line="3" column="2" selection-start-line="3" selection-start-column="2" selection-end-line="3" selection-end-column="2" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$USER_HOME$/AppData/Local/Temp/Rar$DIa12856.9204/iat_python3_demo.py" />
-    <entry file="file://$USER_HOME$/AppData/Local/Temp/Rar$DIa2420.18819/iat_python3_demo.py" />
     <entry file="das://85ccb21c-b94f-49b1-aabe-776c4c0e4046/schema/sql_db/table/table1" />
     <entry file="das://85ccb21c-b94f-49b1-aabe-776c4c0e4046/schema/sql_db/table/patient" />
     <entry file="file://$PROJECT_DIR$/templates/audio_test.html">
@@ -827,13 +858,6 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/static/test.txt">
       <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/cmdb/models.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="3340">
-          <caret line="167" column="31" selection-start-line="167" selection-start-column="31" selection-end-line="167" selection-end-column="31" />
-        </state>
-      </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/templates/layouts-fixed-sidebar.html">
       <provider selected="true" editor-type-id="text-editor">
@@ -902,13 +926,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/templates/index.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="3820">
-          <caret line="191" column="54" selection-start-line="191" selection-start-column="54" selection-end-line="191" selection-end-column="54" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/static/css/styles.css">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="2120">
@@ -958,30 +975,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/templates/a_diagnosis.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="419">
-          <caret line="144" column="25" selection-start-line="144" selection-start-column="25" selection-end-line="144" selection-end-column="25" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/static/py/word_cut_test.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="559">
-          <caret line="138" column="10" selection-start-line="138" selection-start-column="10" selection-end-line="138" selection-end-column="10" />
-          <folding>
-            <element signature="e#0#12#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/templates/test.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="440">
-          <caret line="25" column="64" selection-start-line="25" selection-start-column="64" selection-end-line="25" selection-end-column="64" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/mysite/settings.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="189">
@@ -989,69 +982,189 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/templates/pdf.html">
+    <entry file="file://$USER_HOME$/Desktop/ThyroidUltrasoundReportStructuring/MainFunction.py">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$USER_HOME$/Desktop/ThyroidUltrasoundReportStructuring/Test.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="260">
-          <caret line="13" column="44" lean-forward="true" selection-start-line="13" selection-start-column="44" selection-end-line="13" selection-end-column="44" />
+          <caret line="14" column="11" lean-forward="true" selection-start-line="14" selection-start-column="11" selection-end-line="14" selection-end-column="11" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/templates/a_extraction.html">
+    <entry file="file://$USER_HOME$/Desktop/ThyroidUltrasoundReportStructuring/constructModelPart1.py">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/core/test.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1195">
-          <caret line="136" column="65" lean-forward="true" selection-start-line="136" selection-start-column="65" selection-end-line="136" selection-end-column="65" />
+        <state relative-caret-position="20">
+          <caret line="1" column="7" selection-start-line="1" selection-start-column="7" selection-end-line="1" selection-end-column="50" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/cmdb/views.py">
+    <entry file="file://$PROJECT_DIR$/cmdb/model.py">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/manage.py">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/static/py/word_cut_test.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="299">
-          <caret line="98" selection-start-line="98" selection-end-line="98" />
+        <state relative-caret-position="2380">
+          <caret line="122" column="85" selection-start-line="122" selection-start-column="74" selection-end-line="122" selection-end-column="85" />
           <folding>
-            <element signature="e#0#45#0" expanded="true" />
+            <element signature="e#0#12#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/mysite/urls.py">
+    <entry file="file://$PROJECT_DIR$/core/MainFunction.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="180">
-          <caret line="33" column="110" selection-start-line="33" selection-start-column="110" selection-end-line="33" selection-end-column="110" />
+        <state relative-caret-position="11720">
+          <caret line="593" column="41" selection-start-line="593" selection-start-column="41" selection-end-line="593" selection-end-column="41" />
           <folding>
-            <element signature="e#630#662#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/templates/a_recognition.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="899">
-          <caret line="249" lean-forward="true" selection-start-line="249" selection-end-line="249" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/templates/a_report_input.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="348">
-          <caret line="365" column="65" lean-forward="true" selection-start-line="365" selection-start-column="40" selection-end-line="365" selection-end-column="65" />
-          <folding>
-            <element signature="n#div#0;n#div#0;n#div#0;n#div#0;n#div#1;n#div#0;n#div#0;n#div#3;n#div#0;n#div#1;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" />
-            <element signature="n#style#0;n#hr#0;n#div#0;n#div#0;n#div#0;n#div#0;n#div#1;n#div#0;n#div#0;n#div#3;n#div#0;n#div#1;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#input#0;n#div#0;n#div#0;n#div#1;n#div#0;n#div#0;n#div#0;n#div#0;n#div#1;n#div#0;n#div#0;n#div#3;n#div#0;n#div#1;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#div#3;n#div#0;n#div#0;n#div#0;n#div#0;n#div#1;n#div#0;n#div#0;n#div#3;n#div#0;n#div#1;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" />
-            <element signature="n#div#4;n#div#0;n#div#0;n#div#0;n#div#0;n#div#1;n#div#0;n#div#0;n#div#3;n#div#0;n#div#1;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" />
-            <element signature="n#div#5;n#div#0;n#div#0;n#div#0;n#div#0;n#div#1;n#div#0;n#div#0;n#div#3;n#div#0;n#div#1;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" />
-            <element signature="n#div#7;n#div#0;n#div#0;n#div#0;n#div#0;n#div#1;n#div#0;n#div#0;n#div#3;n#div#0;n#div#1;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" />
-            <element signature="n#div#8;n#div#0;n#div#0;n#div#0;n#div#0;n#div#1;n#div#0;n#div#0;n#div#3;n#div#0;n#div#1;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" />
-            <element signature="n#div#9;n#div#0;n#div#0;n#div#0;n#div#0;n#div#1;n#div#0;n#div#0;n#div#3;n#div#0;n#div#1;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" />
+            <element signature="e#14#25#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/static/js/submit_post.js">
       <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="152">
+          <caret line="85" column="34" lean-forward="true" selection-start-line="85" selection-start-column="34" selection-end-line="85" selection-end-column="34" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/core/insert_sql.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="212">
+          <caret line="135" column="36" lean-forward="true" selection-start-line="135" selection-start-column="36" selection-end-line="135" selection-end-column="36" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/cmdb/models.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="92">
+          <caret line="78" column="13" selection-start-line="78" selection-start-column="4" selection-end-line="78" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/pdf.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="332">
+          <caret line="71" column="69" lean-forward="true" selection-start-line="71" selection-start-column="69" selection-end-line="71" selection-end-column="69" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/mysite/urls.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="236">
+          <caret line="28" column="68" lean-forward="true" selection-start-line="28" selection-start-column="68" selection-end-line="28" selection-end-column="68" />
+          <folding>
+            <element signature="e#630#662#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/tables.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="182">
+          <caret line="312" column="30" selection-start-line="261" selection-start-column="24" selection-end-line="312" selection-end-column="30" />
+          <folding>
+            <element signature="n#div#1;n#div#0;n#div#0;n#div#0;n#div#1;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/test.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="260">
+          <caret line="171" selection-end-line="253" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="236">
+          <caret line="174" column="76" selection-start-line="174" selection-start-column="76" selection-end-line="174" selection-end-column="76" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/a_diagnosis.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="400">
+          <caret line="171" column="25" selection-start-line="171" selection-start-column="25" selection-end-line="171" selection-end-column="25" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/a_recognition.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="332">
+          <caret line="171" column="25" selection-start-line="171" selection-start-column="25" selection-end-line="171" selection-end-column="25" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/a_extraction.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="300">
+          <caret line="153" selection-start-line="153" selection-end-line="153" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/a_report_input.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="600">
+          <caret line="168" column="25" selection-start-line="168" selection-start-column="25" selection-end-line="168" selection-end-column="25" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/check_report.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="412">
+          <caret line="171" column="25" selection-start-line="171" selection-start-column="25" selection-end-line="171" selection-end-column="25" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/AppData/Local/Temp/Rar$DIa3864.19060/yinshua.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-408">
+          <caret line="16" column="52" selection-start-line="16" selection-start-column="52" selection-end-line="16" selection-end-column="52" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/Desktop/yinshua.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="200">
+          <caret line="16" column="35" lean-forward="true" selection-start-line="16" selection-start-column="35" selection-end-line="16" selection-end-column="35" />
+          <folding>
+            <element signature="e#109#124#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/cmdb/views.py">
+      <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="199">
-          <caret line="91" column="34" lean-forward="true" selection-start-line="91" selection-start-column="34" selection-end-line="91" selection-end-column="34" />
+          <caret line="462" column="52" lean-forward="true" selection-start-line="462" selection-start-column="52" selection-end-line="462" selection-end-column="52" />
+          <folding>
+            <element signature="e#0#45#0" expanded="true" />
+            <element signature="e#1727#2106#0" />
+            <element signature="e#2339#2599#0" />
+            <element signature="e#2648#2908#0" />
+            <element signature="e#3027#3277#0" />
+            <element signature="e#3393#3643#0" />
+            <element signature="e#3746#5118#0" />
+            <element signature="e#5145#5652#0" />
+            <element signature="e#5912#5954#0" />
+            <element signature="e#6001#6223#0" />
+            <element signature="e#6262#6498#0" />
+            <element signature="e#6547#7189#0" />
+            <element signature="e#7207#7419#0" />
+            <element signature="e#7441#9493#0" />
+            <element signature="e#9511#9839#0" />
+            <element signature="e#11387#12102#0" />
+            <element signature="e#12167#14057#0" />
+          </folding>
         </state>
       </provider>
     </entry>
