@@ -42,8 +42,6 @@ import time
 # Create your views here.
 
 inputReportList = [
-{'id': '1111111', 'name': '王五', 'check': '甲状腺', 'date': '2019-03-25', 'report': '/static/pdf/王五_1111111_2019-03-25.pdf'},
-{'id': '1111111', 'name': '李四', 'check': '甲状腺', 'date': '2019-03-25', 'report': '/static/pdf/王五_1111111_2019-03-25.pdf'}
 ]
 
 
@@ -81,7 +79,7 @@ def pdf(request):
     p_age = '30'
     p_id = '1'
     tempDic = {'p_name': p_name, 'p_sex': p_sex, 'p_age': p_age, 'p_id': p_id}
-    return render(request, )
+    return render(request, "pdf.html")
 
 
 def forms(request):
@@ -89,11 +87,24 @@ def forms(request):
 
 
 def check_report(request):
+    inputReportList=[]
+    pwd = os.path.abspath(os.path.join(os.path.dirname("__file__"), os.path.pardir))
+    f = open(pwd + "/mysite/static/pdf/report_list.txt", 'r')
+    for line in f:
+        print(line)
+        temp = json.loads(line)
+        tempReportInfo = {'id': temp['id'], 'name': temp['name'], 'check': temp['check'], 'date': temp['date'], 'report': temp['report']}
+        inputReportList.append(tempReportInfo)
+    print(inputReportList)
     return render(request, "check_report.html", {'lst': inputReportList},)
 
 
 def a_report_input(request):
-    return render(request, "a_report_input.html",)
+    pwd = os.path.abspath(os.path.join(os.path.dirname("__file__"), os.path.pardir))
+    f = open(pwd + "/mysite/static/check_num.txt", 'r')
+    check_num = f.read()
+    print(check_num)
+    return render(request, "a_report_input.html",{'check_num':check_num})
 
 
 def a_recognition(request):
@@ -154,6 +165,7 @@ def registered(request):
 
 def register(request):
     print('0')
+    message=""
     if request.method == 'POST':
         print('00')
         message = "检查填写内容"
@@ -178,16 +190,20 @@ def register(request):
                     return render(request, 'register.html', locals())
             register_add = User.objects.create_user(username=username, email=email, password=password)
             print('add')
-            print(register_add)
+            re = auth.authenticate(username=username, password=password)
             message = "注册成功"
             if register_add == False:
                 print('3')
                 return render(request, 'share1.html', {'registAdd': register_add, 'username': username})
+            else:
+                auth.login(request, re)
+                print(register_add)
+                return redirect("/index", {'user': re})
     else:
         uf = UserForm()
         print('4')
-    return HttpResponse(message)
-    # return render(request, 'register.html')
+    # return HttpResponse(message)
+    return render(request, 'register.html')
 
 
 def login(request):
@@ -207,7 +223,7 @@ def login(request):
 
 def logout(request):
     auth.logout(request)
-    return render(request, "a_report_input.html")
+    return render(request, "index.html")
 
 
 def xx(request):
@@ -534,7 +550,7 @@ def save_pdf(request):
     result = 'error'
     if request.method == "POST":
         temp_json = json.loads(request.POST.get('string'))
-        print(temp_json)
+        # print(temp_json)
         p_name = temp_json['table_patient_name']
         p_sex = temp_json['table_patient_sex']
         p_age = temp_json['table_patient_age']
@@ -548,7 +564,7 @@ def save_pdf(request):
         p_diagnosis = temp_json['diagnosis']
         review_physician = temp_json['review_physician']
         check_date = temp_json['check_date']
-        print(p_name, p_sex, p_age, p_id)
+        # print(p_name, p_sex, p_age, p_id)
 
         with connection.cursor() as c:
             c.execute("select * from report_detail where report_id = '1'")
@@ -666,7 +682,13 @@ def save_pdf(request):
         p_report_name = p_name + '_' + p_check_num + '_' + check_date
         report_ass = '/static/pdf/'+p_report_name+'.pdf'
         tempReportInfo = {'id': p_id, 'name': p_name, 'check': p_check_item, 'date': check_date, 'report': report_ass}
-        inputReportList.append(tempReportInfo)
+        # inputReportList.append(tempReportInfo)
+        pwd = os.path.abspath(os.path.join(os.path.dirname("__file__"), os.path.pardir))
+        f = open(pwd + "/mysite/static/pdf/report_list.txt", 'a+')
+        write_str = '\n{' + "\"id\": \"" + p_check_num + "\", \"name\": \"" + p_name + "\", \"check\": \"" + p_check_item + "\", \"date\": \"" + check_date + "\", \"report\": \"" + report_ass + "\"}"
+        print(write_str)
+        f.write(write_str)
+        f.close()
         data = dict()
         print('1')
         template = get_template('pdf.html')
@@ -681,6 +703,9 @@ def save_pdf(request):
         # pdf = pdfkit.from_url(url, filename, configuration=confg)
         response = HttpResponse(pdf, content_type='application/pdf')
         response['Content-Disposition'] = 'attachment; filename="' + filename + '"'
+        f = open(pwd + "/mysite/static/check_num.txt", 'w')
+        p_check_num = int(p_check_num) + 1
+        f.write(str(p_check_num))
         return redirect('/pdf', {'p_name': p_name , 'p_sex': p_sex, 'p_age': p_age, 'p_id': p_id})
         # pwd = os.path.abspath(os.path.join(os.path.dirname("__file__"), os.path.pardir))
         # file = pwd+"/mysite/templates/test.html"
