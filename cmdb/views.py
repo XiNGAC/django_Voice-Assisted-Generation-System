@@ -11,8 +11,9 @@ from django.template.loader import get_template
 from django.template import Context
 from django.forms import fields
 from django import forms
-from cmdb.models import ReportDetail, NormalInfo, ChangeInfo
+from cmdb.models import ReportDetail, NormalInfo, ChangeInfo, Patient
 import json
+import re
 import pymysql
 from aip import AipSpeech
 import codecs
@@ -26,6 +27,7 @@ import requests
 import pdfkit
 from wkhtmltopdf.views import PDFTemplateView
 from core import MainFunction
+from core import LSTM_CRF
 from core import insert_sql
 
 
@@ -67,6 +69,10 @@ def index(request):
 
 def test(request):
     return render(request, "test.html", {'lst': inputReportList})
+
+
+def creat_patient(request):
+    return render(request, "creat_patient.html", )
 
 
 def pdf(request):
@@ -115,10 +121,11 @@ def a_recognition_submit_table1(request):
     if request.method == "POST":
         input_str = request.POST.get("report_input")
         print(input_str)
-    print('helloworld')
-    result_str = 'TABLE1: recognition submit as '+input_str
-    print(result_str)
-    return JsonResponse(result_str, safe=False)
+    # print('helloworld')
+    result_str = LSTM_CRF.evaluate_line(input_str)
+    # result_str = 'TABLE1: recognition submit as '+input_str
+    print(result_str['entities'])
+    return JsonResponse(str(result_str['entities']), safe=False)
 
 
 def a_recognition_submit_table2(request):
@@ -503,9 +510,18 @@ def run_ocr(request):
         result = str(r.content, 'utf-8')
         jsondata = json.loads(result)
         print(jsondata)
-        resultdata = jsondata['data']['block'][0]['line'][0]['word'][0]['content']
-        print(resultdata)
-        return JsonResponse(resultdata, safe=False);
+        str_data=json.dumps(jsondata,ensure_ascii=False)
+        refind = re.findall("{\"content\": \"(.*?)\"}", str_data)
+        print(refind)
+        print(type(refind))
+        result_data = ''
+        result_data = result_data.join(refind)
+        # resultdata = jsondata['data']['block'][0]['line'][0]['word'][0]['content']
+        print(result_data)
+        # str_list = ['Python', 'Tab']
+        # a = ''
+        # print(a.join(refind))
+        return JsonResponse(result_data, safe=False);
 
 
 def insert_into_mysql(request):
@@ -544,6 +560,19 @@ def insert_into_mysql(request):
                                              change_right=cr_id, change_left=cl_id)
         print(type(create), create)
         return JsonResponse(temp_json, safe=False)
+
+
+def insert_patient(request):
+    if request.method == 'POST':
+        name = (request.POST.get('name'))
+        if request.POST.get('sex')=='男':
+            sex = 1
+        else:
+            sex = 2
+        age = (request.POST.get('age'))
+        create = Patient.objects.create(patient_name=name, patient_age=age, patient_sex=sex)
+        print(type(create),create)
+        return JsonResponse('1', safe=False)
 
 
 def save_pdf(request):

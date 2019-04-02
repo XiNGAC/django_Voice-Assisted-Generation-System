@@ -171,7 +171,7 @@ class NormalInfo(models.Model):
 
 
 class Patient(models.Model):
-    patient_id = models.CharField(primary_key=True, max_length=255)
+    patient_id = models.AutoField(primary_key=True, max_length=255)
     patient_name = models.CharField(max_length=20)
     patient_sex = models.IntegerField()
     patient_age = models.IntegerField()

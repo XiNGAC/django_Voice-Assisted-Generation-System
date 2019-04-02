@@ -55,6 +55,7 @@ RandomKey.idx=0;
 
             {% if user.is_authenticated %}
 
+
             <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                     <img src="{% static "./imgs/avatar-1.png" %}" class="avatar avatar-sm" alt="logo">
@@ -74,8 +75,8 @@ RandomKey.idx=0;
 
                     <div class="dropdown-header">Settings</div>
 
-                    <a href="/creat_patient/" class="dropdown-item">
-                        <i class="fa fa-bell"></i> 增加病人
+                    <a href="#" class="dropdown-item">
+                        <i class="fa fa-bell"></i> Notifications
                     </a>
 
                     <a href="#" class="dropdown-item">
@@ -140,7 +141,7 @@ RandomKey.idx=0;
                             </li>
 
                             <li class="nav-item">
-                                <a href="/a_extraction/" class="nav-link ">
+                                <a href="/a_extraction/" class="nav-link">
                                     <i class="icon icon-target"></i> 关系抽取
                                 </a>
                             </li>
@@ -159,10 +160,11 @@ RandomKey.idx=0;
                     </li>
 
                     <li class="nav-item">
-                        <a href="{% url 'check_report' %}" class="nav-link active">
+                        <a href="{% url 'check_report' %}" class="nav-link">
                             <i class="icon icon-grid"></i> 查看病历
                         </a>
                     </li>
+
 
 
 
@@ -179,52 +181,49 @@ RandomKey.idx=0;
                     <div class="col-md-12">
                         <div class="card">
                             <div class="card-header bg-light font-label">
-                                病历查看
+                                新增病人信息
                             </div>
 
                             <div class="card-body">
-                            <div class="table-responsive">
-                                <table class="table">
-                                    <thead>
-                                    <tr>
-                                        <th>病历编号</th>
-                                        <th>患者姓名</th>
-                                        <th>检查项目</th>
-                                        <th>检查日期</th>
-                                        <th>查看报告</th>
-                                    </tr>
-                                    </thead>
-                                    <tbody>
-                                    {% for line in lst %}
-                                        <tr>
-                                            <td>{{ line.id }}</td>
-                                            <td>{{ line.name }}</td>
-                                            <td>{{ line.check }}</td>
-                                            <td>{{ line.date }}</td>
-                                            <td><a href="{{ line.report }}" target="_blank">查看报告</a></td>
-                                        </tr>
-
-                                    {% endfor %}
-{#                                    <tr>#}
-{#                                        <td>1</td>#}
-{#                                        <td class="text-nowrap">Samsung Galaxy S8</td>#}
-{#                                        <td>31,589</td>#}
-{#                                        <td>$800</td>#}
-{#                                        <td>5%</td>#}
-{#                                    </tr>#}
-
-
-
-                                    </tbody>
-                                </table>
-                            </div>
-                        </div>
-
-
-
-
+                                <div class = "col-md-4">
+                                    <div class="input-group mb-3">
+                                        <div class="input-group-prepend">
+                                            <span class="input-group-text">姓名</span>
+                                        </div>
+                                        <input id="p_name" name="p_name" type="text" class="to_report form-control" placeholder="请输入姓名">
+                                    </div>
+                                </div>
+                                <div class = "col-md-4">
+                                    <div class="input-group mb-3">
+                                        <div class="input-group-prepend">
+                                            <span class="input-group-text">年龄</span>
+                                        </div>
+                                        <input id="p_age" name="p_age" type="text" class="to_report form-control" placeholder="请输入年龄" oninput="value=value.replace(/[^\d]/g,'')">
+                                        <div class="input-group-append">
+                                            <span class="input-group-text">岁</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class = "col-md-4">
+                                    <div class="input-group mb-3">
+                                        <div class="input-group-prepend">
+                                            <span class="input-group-text">性别</span>
+                                        </div>
+                                        <select id="p_sex" name="p_sex" class="form-control to_report">
+                                            <option>男</option>
+                                            <option>女</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                <button id="" type="button" class="btn btn-rounded btn-primary btn-lg" onclick="create_patient()">录入信息</button>
+                                <small id="p_save_noticing" style="color: #00BB11;display: none;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;录入中</small>
+                                <small id="p_save_notice" style="color: #00BB11;display: none;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;录入成功</small>
+                                <small id="p_save_notice_error" style="color: red;display: none;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;请填充完整信息</small>
 
                             </div>
+
+
                         </div>
                     </div>
                 </div>

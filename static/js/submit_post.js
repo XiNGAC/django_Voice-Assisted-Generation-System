@@ -11,7 +11,7 @@ function submit_recognition(table){
        },
        success: function (data) {
            console.info(data);
-           alert(data);
+           // alert(data);
            var result_str = 'result_translate_to_word_'+table;
            document.getElementById(result_str).value= data;
        }
@@ -30,7 +30,7 @@ function submit_extraction(){
        },
        success: function (data) {
            console.info(data);
-           alert(data);
+           // alert(data);
            document.getElementById('result_translate_to_word').value= data;
        }
     });
@@ -48,7 +48,7 @@ function submit_diagnosis(){
        },
        success: function (data) {
            console.info(data);
-           alert(data);
+           // alert(data);
            document.getElementById('result_translate_to_word').value= data;
        }
     });
@@ -114,9 +114,37 @@ function run_ocr(table) {
        },
        success: function (data) {
            console.info(data);
-           alert(data);
+           // alert(data);
            var name = 'translate_to_word_'+table;
            document.getElementById(name).value= data;
        }
     });
+}
+
+function create_patient () {
+    var name = document.getElementById("p_name").value;
+    var sex = document.getElementById("p_sex").value;
+    var age = document.getElementById("p_age").value;
+    if(name=='' || age==''){
+        document.getElementById('p_save_notice_error').style.display="block";
+        document.getElementById('p_save_notice').style.display="none";
+    }
+    else{
+        document.getElementById('p_save_notice_error').style.display="none";
+        document.getElementById('p_save_noticing').style.display="block";
+        $.ajax({
+       type : "post",
+       url : "/insert_patient",
+       datatype : "json",
+       data: {
+           name: name,
+           sex: sex,
+           age: age
+       },
+       success: function () {
+           document.getElementById('p_save_noticing').style.display="none";
+           document.getElementById('p_save_notice').style.display="block";
+       }
+    });
+    }
 }
