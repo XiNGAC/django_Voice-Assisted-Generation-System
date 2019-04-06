@@ -1,4 +1,14 @@
 function submit_recognition(table){
+    var table_name = 'recognition_' + table;
+    var tb = document.getElementById(table_name);
+    var row_num = tb.rows.length;
+    alert(row_num);
+    for(var i = 1; i <row_num; i++)
+    {
+        tb.deleteRow(i);
+        row_num=row_num-1;
+        i=i-1;
+    }
     var input_str = 'translate_to_word_'+table;
     var input_text = document.getElementById(input_str).value;
     var str_url = "/a_recognition_submit_"+ table;
@@ -10,10 +20,26 @@ function submit_recognition(table){
            report_input : input_text
        },
        success: function (data) {
-           console.info(data);
-           // alert(data);
+           // console.info(data);
+           alert(data[1]);
+           var tab = document.getElementById(table_name);
+           for(var j = 0,len = data.length; j < len; j++){
+               console.log(data[j]);
+               var newTR = tab.insertRow(tab.rows.length);
+               var new1 = newTR.insertCell();
+               var new2 = newTR.insertCell();
+               var new3 = newTR.insertCell();
+               var new4 = newTR.insertCell();
+               var new5 = newTR.insertCell();
+               new1.innerText = j+1;
+               new2.innerText = data[j][0];
+               new3.innerText = data[j][1];
+               new4.innerText = data[j][2];
+               new5.innerText = data[j][3];
+
+           }
            var result_str = 'result_translate_to_word_'+table;
-           document.getElementById(result_str).value= data;
+           // document.getElementById(result_str).value= data;
        }
     });
     // alert('1');

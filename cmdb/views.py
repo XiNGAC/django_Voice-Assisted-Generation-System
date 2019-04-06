@@ -28,6 +28,7 @@ import pdfkit
 from wkhtmltopdf.views import PDFTemplateView
 from core import MainFunction
 from core import LSTM_CRF
+from core_rx import LSTM_RX
 from core import insert_sql
 
 
@@ -124,18 +125,28 @@ def a_recognition_submit_table1(request):
     # print('helloworld')
     result_str = LSTM_CRF.evaluate_line(input_str)
     # result_str = 'TABLE1: recognition submit as '+input_str
-    print(result_str['entities'])
-    return JsonResponse(str(result_str['entities']), safe=False)
+    # print(type(result_str['entities']), result_str['entities'])
+    arr=[]
+    for i in result_str['entities']:
+        # print(i['word'],i['type'],i['start'],i['end'])
+        arr.append((i['word'], i['type'], i['start'], i['end']))
+    print(type(arr), arr)
+    return JsonResponse(arr, safe=False)
 
 
 def a_recognition_submit_table2(request):
     if request.method == "POST":
         input_str = request.POST.get("report_input")
         print(input_str)
-    print('helloworld')
+    # print('helloworld')
+    result_str = LSTM_RX.evaluate_line(input_str)
     result_str = 'TABLE2: recognition submit as '+input_str
-    print(result_str)
-    return JsonResponse(result_str, safe=False)
+    arr = []
+    for i in result_str['entities']:
+        # print(i['word'],i['type'],i['start'],i['end'])
+        arr.append((i['word'], i['type'], i['start'], i['end']))
+    print(type(arr), arr)
+    return JsonResponse(arr, safe=False)
 
 
 def a_extraction(request):

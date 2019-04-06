@@ -1,253 +1,37 @@
-<!doctype html>
-<html lang="en">
-<head>
-    {% load staticfiles %}
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Carbon - Admin Template</title>
-    <link rel="stylesheet" href="{% static "./vendor/simple-line-icons/css/simple-line-icons.css" %}">
-    <link rel="stylesheet" href="{% static "./vendor/font-awesome/css/fontawesome-all.min.css" %}">
-    <link rel="stylesheet" href="{% static "./css/styles.css" %}">
-    <link rel="stylesheet" href="{% static "./css/test.css" %}">
-
-
-
-</head>
-<body class="sidebar-fixed header-fixed">
-<!--加载核心库，其他类型支持库在下面根据用户点击选择加载-->
-<script src="{% static "./js/recorder-core.js"%}"></script>
-
-<!--加载可选扩展库-->
-<script src="{% static "./js/waveview.js" %}"></script>
-<script src="{% static "./js/mp3.js" %}"></script>
-<script src="{% static "./js/mp3-engine.js" %}"></script>
-<script src="{% static "./js/wav.js" %}"></script>
-<script src="{% static "./js/submit_post.js" %}"></script>
-<script>
-    function RandomKey(){
-	return "randomkey"+(RandomKey.idx++);
-    };
-RandomKey.idx=0;
-</script>
-<style type="text/css">
-    span{
-        color:mediumvioletred;
-    }
-</style>
-<div class="page-wrapper">
-    <nav class="navbar page-header">
-        <a href="#" class="btn btn-link sidebar-mobile-toggle d-md-none mr-auto">
-            <i class="fa fa-bars"></i>
-        </a>
-
-        <a class="navbar-brand" href="#">
-            <img src="{% static "./imgs/logo.png" %}" alt="logo">
-        </a>
-
-        <a href="#" class="btn btn-link sidebar-toggle d-md-down-none">
-            <i class="fa fa-bars"></i>
-        </a>
-
-
-
-        <ul class="navbar-nav ml-auto">
-
-            {% if user.is_authenticated %}
-            <li class="nav-item d-md-down-none">
-                <a href="#">
-                    <i class="fa fa-bell"></i>
-                    <span class="badge badge-pill badge-danger">3</span>
-                </a>
-            </li>
-
-            <li class="nav-item d-md-down-none">
-                <a href="#">
-                    <i class="fa fa-envelope-open"></i>
-                    <span class="badge badge-pill badge-danger">5</span>
-                </a>
-            </li>
-
-            <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    <img src="{% static "./imgs/avatar-1.png" %}" class="avatar avatar-sm" alt="logo">
-                    <span class="small ml-1 d-md-down-none">{{ user.username }}</span>
-                </a>
-
-                <div class="dropdown-menu dropdown-menu-right">
-                    <div class="dropdown-header">Account</div>
-
-                    <a href="/login/" class="dropdown-item">
-                        <i class="fa fa-user"></i> Profile
-                    </a>
-
-                    <a href="#" class="dropdown-item">
-                        <i class="fa fa-envelope"></i> Messages
-                    </a>
-
-                    <div class="dropdown-header">Settings</div>
-
-                    <a href="#" class="dropdown-item">
-                        <i class="fa fa-bell"></i> Notifications
-                    </a>
-
-                    <a href="#" class="dropdown-item">
-                        <i class="fa fa-wrench"></i> Settings
-                    </a>
-
-                    <a href="/logout/" class="dropdown-item">
-                        <i class="fa fa-lock"></i> Logout
-                    </a>
-                </div>
-            </li>
-
-            {% else %}
-                <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    <img src="{% static "./imgs/avatar-1.png" %}" class="avatar avatar-sm" alt="logo">
-                    <span class="small ml-1 d-md-down-none">Welcome</span>
-                </a>
-
-                <div class="dropdown-menu dropdown-menu-right">
-                    <div class="dropdown-header">Account</div>
-
-                    <a href="/register/" class="dropdown-item">
-                        <i class="fa fa-user"></i> registered
-                    </a>
-
-                    <a href="/login/" class="dropdown-item">
-                        <i class="fa fa-envelope"></i> login
-                    </a>
-
-                </div>
-            </li>
-
-            {% endif %}
-        </ul>
-    </nav>
-
-    <div class="main-container">
-        <div class="sidebar">
-            <nav class="sidebar-nav">
-                <ul class="nav">
-                    <li class="nav-title">Navigation</li>
-
-                    <li class="nav-item">
-                        <a href="/index/" class="nav-link">
-                            <i class="icon icon-speedometer"></i> 主页
-                        </a>
-                    </li>
-
-                    <li class="nav-item">
-                        <a href="{% url 'a_report_input' %}" class="nav-link">
-                            <i class="icon icon-grid"></i> 病历录入
-                        </a>
-                    </li>
-
-                    <li class="nav-item nav-dropdown">
-                        <a href="#" class="nav-link nav-dropdown-toggle">
-                            <i class="icon icon-target"></i> 电子病历辅助诊断 <i class="fa fa-caret-left"></i>
-                        </a>
-
-                        <ul class="nav-dropdown-items">
-                            <li class="nav-item">
-                                <a href="/a_recognition/" class="nav-link">
-                                    <i class="icon icon-target"></i> 实体识别
-                                </a>
-                            </li>
-
-                            <li class="nav-item">
-                                <a href="/a_extraction/" class="nav-link ">
-                                    <i class="icon icon-target"></i> 关系抽取
-                                </a>
-                            </li>
-
-                            <li class="nav-item">
-                                <a href="/a_diagnosis/" class="nav-link">
-                                    <i class="icon icon-target"></i> 辅助诊断
-                                </a>
-                            </li>
-                        </ul>
-                    </li>
-
-                    <li class="nav-item">
-                        <a href="{% url 'check_report' %}" class="nav-link active">
-                            <i class="icon icon-grid"></i> 查看病历
-                        </a>
-                    </li>
-
-
-
-
-
-                </ul>
-            </nav>
-        </div>
-
-        <div class="content">
-            <div class="font-size-20">电子病历辅助诊断系统</div>
-            <div class="container-fluid">
-                <div class="row mt-4">
-                    <div class="col-md-12">
-                        <div class="card">
-                            <div class="card-header bg-light font-label">
-                                病历查看
-                            </div>
-
-                            <div class="card-body">
-                            <div class="table-responsive">
-                                <table class="table">
-                                    <thead>
-                                    <tr>
-                                        <th>病历编号</th>
-                                        <th>患者姓名</th>
-                                        <th>检查项目</th>
-                                        <th>检查日期</th>
-                                        <th>查看报告</th>
-                                    </tr>
-                                    </thead>
-                                    <tbody>
-                                    {% for line in lst %}
-                                        <tr>
-                                            <td>{{ line.id }}</td>
-                                            <td>{{ line.name }}</td>
-                                            <td>{{ line.check }}</td>
-                                            <td>{{ line.date }}</td>
-                                            <td><a href="{{ line.report }}" target="_blank">查看报告</a></td>
-                                        </tr>
-
-                                    {% endfor %}
-{#                                    <tr>#}
-{#                                        <td>1</td>#}
-{#                                        <td class="text-nowrap">Samsung Galaxy S8</td>#}
-{#                                        <td>31,589</td>#}
-{#                                        <td>$800</td>#}
-{#                                        <td>5%</td>#}
-{#                                    </tr>#}
-
-
-
-                                    </tbody>
-                                </table>
-                            </div>
-                        </div>
-
-
-
-
-
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-    </div>
-</div>
-<script src="{% static "./vendor/jquery/jquery.min.js" %}"></script>
-<script src="{% static "./vendor/popper.js/popper.min.js" %}"></script>
-<script src="{% static "./vendor/bootstrap/js/bootstrap.min.js" %}"></script>
-<script src="{% static "./vendor/chart.js/chart.min.js" %}"></script>
-<script src="{% static "./js/carbon.js" %}"></script>
-<script src="{% static "./js/demo.js" %}"></script>
-</body>
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=gb2312">
+        <title>增加Table行</title>
+    </head>
+    <script>
+        function addRow(obj)
+        {
+        //添加一行
+        var newTr = testTbl.insertRow();
+        //添加两列
+        var newTd0 = newTr.insertCell();
+        var newTd1 = newTr.insertCell();
+        //设置列内容和属性
+        newTd0.innerHTML = '<input type=checkbox id="box4">';
+        newTd1.innerText= '新加行';
+        }
+    </script>
+    <body>
+        <table id="testTbl" border=1>
+            <tr id="tr1">
+                <td ><input type=checkbox id="box1"></td>
+                <td id="b">第一行</td>
+            </tr>
+            <tr id="tr2">
+                <td ><input type=checkbox id="box2"></td>
+                <td id="b">第二行</td>
+            </tr>
+            <tr id="tr3">
+                <td ><input type=checkbox id="box3"></td>
+                <td>第三行</td>
+            </tr>
+        </table>       
+        <br />
+        <input type="button" id="add" onclick="addRow();" value="Add Row" />
+    </body>
 </html>
