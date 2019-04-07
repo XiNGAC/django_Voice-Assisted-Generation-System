@@ -2,19 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="ea24e592-6d03-40a4-b296-8daf6106768e" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/core/LSTM_RX.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/core/config_file" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/core/crf.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/core/source/dev.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/core/source/dict.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/core/source/result.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/core/source/temphuanzhe.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/core/source/test.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/core/source/train.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmdb/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/cmdb/views.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/js/submit_post.js" beforeDir="false" afterPath="$PROJECT_DIR$/static/js/submit_post.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/test.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/test.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/css/styles.css" beforeDir="false" afterPath="$PROJECT_DIR$/static/css/styles.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/css/test.css" beforeDir="false" afterPath="$PROJECT_DIR$/static/css/test.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/check_report.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/check_report.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/index.html" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -73,22 +65,10 @@
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/core/LSTM_CRF.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="3580">
-              <caret line="221" column="8" selection-start-line="221" selection-start-column="8" selection-end-line="224" selection-end-column="21" />
-              <folding>
-                <element signature="e#17#30#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/core_rx/LSTM_RX.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="200">
-              <caret line="190" column="22" selection-start-line="190" selection-start-column="22" selection-end-line="190" selection-end-column="22" />
+            <state relative-caret-position="640">
+              <caret line="200" lean-forward="true" selection-start-line="200" selection-end-line="200" />
             </state>
           </provider>
         </entry>
@@ -96,8 +76,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/cmdb/views.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="410">
-              <caret line="141" column="49" lean-forward="true" selection-start-line="141" selection-start-column="49" selection-end-line="141" selection-end-column="49" />
+            <state relative-caret-position="1980">
+              <caret line="141" column="49" selection-start-line="141" selection-start-column="49" selection-end-line="141" selection-end-column="49" />
               <folding>
                 <element signature="e#0#45#0" expanded="true" />
               </folding>
@@ -117,11 +97,29 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/templates/a_recognition.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="371">
-              <caret line="271" column="65" selection-start-line="271" selection-start-column="65" selection-end-line="271" selection-end-column="65" />
+            <state relative-caret-position="420">
+              <caret line="117" column="44" selection-start-line="117" selection-start-column="44" selection-end-line="117" selection-end-column="44" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/templates/index.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="240">
+              <caret line="117" column="44" selection-start-line="117" selection-start-column="31" selection-end-line="117" selection-end-column="44" />
               <folding>
-                <element signature="n#style#0;n#img#0;n#div#1;n#div#0;n#div#0;n#div#1;n#div#0;n#div#0;n#div#0;n#div#1;n#div#1;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/static/css/test.css">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="80">
+              <caret line="4" column="30" selection-start-line="4" selection-start-column="30" selection-end-line="4" selection-end-column="30" />
             </state>
           </provider>
         </entry>
@@ -135,23 +133,29 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/templates/check_report.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="114">
-              <caret line="192" column="53" selection-start-line="192" selection-start-column="53" selection-end-line="192" selection-end-column="53" />
+            <state relative-caret-position="180">
+              <caret line="9" column="99" lean-forward="true" selection-start-line="9" selection-start-column="99" selection-end-line="9" selection-end-column="99" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/templates/a_report_input.html">
+        <entry file="file://$PROJECT_DIR$/templates/a_diagnosis.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="340">
-              <caret line="272" column="80" selection-start-line="272" selection-start-column="80" selection-end-line="272" selection-end-column="80" />
-              <folding>
-                <element signature="n#style#0;n#input#0;n#div#0;n#div#0;n#div#1;n#div#0;n#div#0;n#div#0;n#div#0;n#div#1;n#div#0;n#div#0;n#div#3;n#div#0;n#div#1;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-              </folding>
+            <state relative-caret-position="195">
+              <caret line="190" column="122" selection-start-line="190" selection-start-column="122" selection-end-line="190" selection-end-column="122" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/templates/a_extraction.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="400">
+              <caret line="116" column="44" selection-start-line="116" selection-start-column="44" selection-end-line="116" selection-end-column="44" />
             </state>
           </provider>
         </entry>
@@ -170,15 +174,11 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>sql_insert_report</find>
-      <find>前后</find>
-      <find>x2</find>
       <find>data[3]</find>
       <find>#x3</find>
       <find>data[4]</find>
       <find>x4</find>
       <find>table_patient_id</find>
-      <find>to_report</find>
       <find>p_nr</find>
       <find>ReportDetail</find>
       <find>p_cl</find>
@@ -200,6 +200,10 @@
       <find>display</find>
       <find>clean</find>
       <find>train</find>
+      <find>select</find>
+      <find>to_report</find>
+      <find>orm-control</find>
+      <find>font</find>
     </findStrings>
     <replaceStrings>
       <replace>.jpg&quot; %}</replace>
@@ -224,6 +228,10 @@
       <replace>p_cr</replace>
       <replace>p_cl</replace>
       <replace>p_ct</replace>
+      <replace>input-group-text font-big-18px</replace>
+      <replace>to_report font-big-18px</replace>
+      <replace>font-big-18px</replace>
+      <replace>orm-control  font-big-18px</replace>
     </replaceStrings>
   </component>
   <component name="Git.Settings">
@@ -249,24 +257,17 @@
         <option value="$PROJECT_DIR$/static/py/audio_transfer.py" />
         <option value="$PROJECT_DIR$/templates/to_use_py_test.html" />
         <option value="$PROJECT_DIR$/templates/temp.html" />
-        <option value="$PROJECT_DIR$/static/css/styles.css" />
-        <option value="$PROJECT_DIR$/static/css/test.css" />
         <option value="$PROJECT_DIR$/mysite/settings.py" />
         <option value="$PROJECT_DIR$/core/test.py" />
         <option value="$PROJECT_DIR$/static/py/word_cut_test.py" />
         <option value="$PROJECT_DIR$/core/insert_sql.py" />
         <option value="$USER_HOME$/Desktop/yinshua.py" />
-        <option value="$PROJECT_DIR$/templates/index.html" />
         <option value="$PROJECT_DIR$/core/LSTM-CRF/LSTM-CRF.py" />
         <option value="$PROJECT_DIR$/core/model.py" />
         <option value="$PROJECT_DIR$/core/utils.py" />
         <option value="$PROJECT_DIR$/templates/login.html" />
         <option value="$PROJECT_DIR$/core/MainFunction.py" />
         <option value="$PROJECT_DIR$/templates/pdf.html" />
-        <option value="$PROJECT_DIR$/templates/a_report_input.html" />
-        <option value="$PROJECT_DIR$/templates/a_diagnosis.html" />
-        <option value="$PROJECT_DIR$/templates/a_extraction.html" />
-        <option value="$PROJECT_DIR$/templates/check_report.html" />
         <option value="$PROJECT_DIR$/templates/creat_patient.html" />
         <option value="$PROJECT_DIR$/mysite/urls.py" />
         <option value="$PROJECT_DIR$/cmdb/models.py" />
@@ -277,12 +278,19 @@
         <option value="$PROJECT_DIR$/core/LSTM_RX.py" />
         <option value="$PROJECT_DIR$/templates/test.html" />
         <option value="$PROJECT_DIR$/static/js/submit_post.js" />
-        <option value="$PROJECT_DIR$/templates/a_recognition.html" />
         <option value="$PROJECT_DIR$/core_rx/model.py" />
         <option value="$PROJECT_DIR$/core_rx/utils.py" />
         <option value="$PROJECT_DIR$/core_rx/main.py" />
         <option value="$PROJECT_DIR$/cmdb/views.py" />
         <option value="$PROJECT_DIR$/core_rx/LSTM_RX.py" />
+        <option value="$PROJECT_DIR$/static/css/test.css" />
+        <option value="$PROJECT_DIR$/templates/index.html" />
+        <option value="$PROJECT_DIR$/static/css/styles.css" />
+        <option value="$PROJECT_DIR$/templates/a_report_input.html" />
+        <option value="$PROJECT_DIR$/templates/a_diagnosis.html" />
+        <option value="$PROJECT_DIR$/templates/a_extraction.html" />
+        <option value="$PROJECT_DIR$/templates/a_recognition.html" />
+        <option value="$PROJECT_DIR$/templates/check_report.html" />
       </list>
     </option>
   </component>
@@ -297,7 +305,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -357,6 +364,7 @@
           <select />
         </subPane>
       </pane>
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -610,7 +618,8 @@
       <workItem from="1553492508715" duration="37138000" />
       <workItem from="1553756454052" duration="3403000" />
       <workItem from="1554039739316" duration="23539000" />
-      <workItem from="1554381694883" duration="6549000" />
+      <workItem from="1554381694883" duration="6589000" />
+      <workItem from="1554604787368" duration="5896000" />
     </task>
     <task id="LOCAL-00001" summary="upload.html test">
       <created>1550811085631</created>
@@ -766,11 +775,18 @@
       <option name="project" value="LOCAL" />
       <updated>1554188163221</updated>
     </task>
-    <option name="localTasksCounter" value="23" />
+    <task id="LOCAL-00023" summary="update">
+      <created>1554557640797</created>
+      <option name="number" value="00023" />
+      <option name="presentableId" value="LOCAL-00023" />
+      <option name="project" value="LOCAL" />
+      <updated>1554557640797</updated>
+    </task>
+    <option name="localTasksCounter" value="24" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="330519000" />
+    <option name="totallyTimeSpent" value="336455000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -785,20 +801,20 @@
     <frame x="-6" y="-6" width="1933" height="1053" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.76541096" visible="true" weight="0.17066666" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.76541096" visible="true" weight="0.17226666" />
       <window_info id="Structure" order="1" sideWeight="0.5017123" side_tool="true" weight="0.15797317" />
       <window_info id="Favorites" order="2" sideWeight="0.23458904" side_tool="true" weight="0.15797317" />
       <window_info id="Database" order="3" weight="0.15946667" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.329718" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" sideWeight="0.74453336" visible="true" weight="0.3264642" />
+      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.744" visible="true" weight="0.3264642" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" sideWeight="0.49546668" weight="0.3275488" />
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
       <window_info anchor="bottom" id="Version Control" order="8" sideWeight="0.49813333" weight="0.329718" />
-      <window_info anchor="bottom" id="Event Log" order="9" sideWeight="0.25546667" side_tool="true" visible="true" weight="0.3264642" />
+      <window_info anchor="bottom" id="Event Log" order="9" sideWeight="0.256" side_tool="true" visible="true" weight="0.3264642" />
       <window_info anchor="bottom" id="Terminal" order="10" sideWeight="0.68266666" weight="0.52386117" />
       <window_info anchor="bottom" id="Python Console" order="11" sideWeight="0.7168" weight="0.3275488" />
       <window_info anchor="bottom" id="Database Changes" order="12" sideWeight="0.4992" weight="0.3286334" />
@@ -856,13 +872,6 @@
     <option name="LAST_COMMIT_MESSAGE" value="update" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/templates/register.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="260">
-          <caret line="37" selection-start-line="37" selection-end-line="37" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/cmdb/__init__.py">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
@@ -934,23 +943,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/static/css/styles.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="180">
-          <caret column="152613" lean-forward="true" selection-start-column="152613" selection-end-column="152613" />
-          <folding>
-            <element signature="e#63922#64122#2" expanded="true" />
-            <element signature="e#64328#64477#2" expanded="true" />
-            <element signature="e#64976#65122#2" expanded="true" />
-            <element signature="e#65422#65588#1" expanded="true" />
-            <element signature="e#76775#77021#2" expanded="true" />
-            <element signature="e#77852#78101#2" expanded="true" />
-            <element signature="e#102520#102710#2" expanded="true" />
-            <element signature="e#102756#102946#2" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/templates/login.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="540">
@@ -969,20 +961,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="160">
           <caret line="53" lean-forward="true" selection-start-line="53" selection-end-line="53" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/templates/a_diagnosis.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="435">
-          <caret line="79" column="24" selection-start-line="79" selection-start-column="24" selection-end-line="79" selection-end-column="24" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/templates/a_extraction.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="500">
-          <caret line="79" column="24" selection-start-line="79" selection-start-column="24" selection-end-line="79" selection-end-column="24" />
         </state>
       </provider>
     </entry>
@@ -1066,13 +1044,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/static/css/test.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="40">
-          <caret line="2" column="30" selection-start-line="2" selection-start-column="30" selection-end-line="2" selection-end-column="30" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/core/utils.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="3460">
@@ -1145,50 +1116,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/core/source/LSTM_RX.py">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/templates/check_report.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="114">
-          <caret line="192" column="53" selection-start-line="192" selection-start-column="53" selection-end-line="192" selection-end-column="53" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/templates/test.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="180">
-          <caret line="9" column="40" selection-start-line="9" selection-start-column="40" selection-end-line="9" selection-end-column="40" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/templates/a_report_input.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="340">
-          <caret line="272" column="80" selection-start-line="272" selection-start-column="80" selection-end-line="272" selection-end-column="80" />
-          <folding>
-            <element signature="n#style#0;n#input#0;n#div#0;n#div#0;n#div#1;n#div#0;n#div#0;n#div#0;n#div#0;n#div#1;n#div#0;n#div#0;n#div#3;n#div#0;n#div#1;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/templates/a_recognition.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="371">
-          <caret line="271" column="65" selection-start-line="271" selection-start-column="65" selection-end-line="271" selection-end-column="65" />
-          <folding>
-            <element signature="n#style#0;n#img#0;n#div#1;n#div#0;n#div#0;n#div#1;n#div#0;n#div#0;n#div#0;n#div#1;n#div#1;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/static/js/submit_post.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="320">
-          <caret line="16" column="20" selection-start-line="16" selection-start-column="13" selection-end-line="16" selection-end-column="20" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/core/source/LSTM_RX.py" />
     <entry file="file://$PROJECT_DIR$/core_rx/conlleval.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="220">
@@ -1256,29 +1184,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/core_rx/main.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="171">
-          <caret line="237" lean-forward="true" selection-start-line="237" selection-end-line="237" />
-          <folding>
-            <element signature="e#17#26#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/cmdb/views.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="410">
-          <caret line="141" column="49" lean-forward="true" selection-start-line="141" selection-start-column="49" selection-end-line="141" selection-end-column="49" />
-          <folding>
-            <element signature="e#0#45#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/core_rx/main.py" />
     <entry file="file://$PROJECT_DIR$/core/LSTM_CRF.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="3580">
+        <state relative-caret-position="4140">
           <caret line="221" column="8" selection-start-line="221" selection-start-column="8" selection-end-line="224" selection-end-column="21" />
           <folding>
             <element signature="e#17#30#0" expanded="true" />
@@ -1286,10 +1195,107 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/cmdb/views.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1980">
+          <caret line="141" column="49" selection-start-line="141" selection-start-column="49" selection-end-line="141" selection-end-column="49" />
+          <folding>
+            <element signature="e#0#45#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/static/js/submit_post.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="320">
+          <caret line="16" column="20" selection-start-line="16" selection-start-column="13" selection-end-line="16" selection-end-column="20" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/test.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="180">
+          <caret line="9" column="40" selection-start-line="9" selection-start-column="40" selection-end-line="9" selection-end-column="40" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/core_rx/LSTM_RX.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="200">
-          <caret line="190" column="22" selection-start-line="190" selection-start-column="22" selection-end-line="190" selection-end-column="22" />
+        <state relative-caret-position="640">
+          <caret line="200" lean-forward="true" selection-start-line="200" selection-end-line="200" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/static/css/styles.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="40">
+          <caret column="26150" lean-forward="true" selection-start-column="26150" selection-end-column="26151" />
+          <folding>
+            <element signature="e#63922#64122#2" expanded="true" />
+            <element signature="e#64328#64477#2" expanded="true" />
+            <element signature="e#64976#65122#2" expanded="true" />
+            <element signature="e#65422#65588#1" expanded="true" />
+            <element signature="e#76775#77021#2" expanded="true" />
+            <element signature="e#77852#78101#2" expanded="true" />
+            <element signature="e#102520#102710#2" expanded="true" />
+            <element signature="e#102756#102946#2" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/static/css/test.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="80">
+          <caret line="4" column="30" selection-start-line="4" selection-start-column="30" selection-end-line="4" selection-end-column="30" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="240">
+          <caret line="117" column="44" selection-start-line="117" selection-start-column="31" selection-end-line="117" selection-end-column="44" />
+          <folding>
+            <element signature="n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/a_report_input.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="91">
+          <caret line="104" column="22" lean-forward="true" selection-start-line="104" selection-start-column="22" selection-end-line="104" selection-end-column="22" />
+          <folding>
+            <element signature="n#div#0;n#div#0;n#div#1;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" />
+            <element signature="n#div#1;n#div#0;n#div#1;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/a_diagnosis.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="195">
+          <caret line="190" column="122" selection-start-line="190" selection-start-column="122" selection-end-line="190" selection-end-column="122" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/a_extraction.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="400">
+          <caret line="116" column="44" selection-start-line="116" selection-start-column="44" selection-end-line="116" selection-end-column="44" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/a_recognition.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="420">
+          <caret line="117" column="44" selection-start-line="117" selection-start-column="44" selection-end-line="117" selection-end-column="44" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/check_report.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="180">
+          <caret line="9" column="99" lean-forward="true" selection-start-line="9" selection-start-column="99" selection-end-line="9" selection-end-column="99" />
         </state>
       </provider>
     </entry>

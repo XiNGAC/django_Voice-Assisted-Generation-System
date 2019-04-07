@@ -9,6 +9,7 @@
     <link rel="stylesheet" href="{% static "./vendor/simple-line-icons/css/simple-line-icons.css" %}">
     <link rel="stylesheet" href="{% static "./vendor/font-awesome/css/fontawesome-all.min.css" %}">
     <link rel="stylesheet" href="{% static "./css/styles.css" %}">
+    <link rel="stylesheet" href="{% static "./css/test.css" %}">
 
 
 
@@ -51,22 +52,10 @@ RandomKey.idx=0;
 
 
 
-        <ul class="navbar-nav ml-auto">
+        <ul class="navbar-nav ml-auto font-big">
 
             {% if user.is_authenticated %}
-            <li class="nav-item d-md-down-none">
-                <a href="#">
-                    <i class="fa fa-bell"></i>
-                    <span class="badge badge-pill badge-danger">3</span>
-                </a>
-            </li>
 
-            <li class="nav-item d-md-down-none">
-                <a href="#">
-                    <i class="fa fa-envelope-open"></i>
-                    <span class="badge badge-pill badge-danger">5</span>
-                </a>
-            </li>
 
             <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -126,7 +115,7 @@ RandomKey.idx=0;
         </ul>
     </nav>
 
-    <div class="main-container">
+    <div class="main-container font-big-18px">
         <div class="sidebar">
             <nav class="sidebar-nav">
                 <ul class="nav">
@@ -183,7 +172,7 @@ RandomKey.idx=0;
             </nav>
         </div>
 
-        <div class="content">
+        <div class="content font-big">
             <div class="container-fluid">
                 <div class="row ">
                     <div class="col-md-3">
